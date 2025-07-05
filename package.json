@@ -10,6 +10,7 @@
     "test:unit": "wp-scripts test-unit-js",
     "test:php": "wp-env run tests-cli php /var/www/html/wp-content/plugins/wp-open-graph/tests/test-api.php",
     "test:php-local": "php tests/test-api.php",
+    "test:playwright": "playwright test",
     "shell": "wp-env run cli wp shell",
     "build": "wp-scripts build",
     "block-start": "wp-scripts start"
