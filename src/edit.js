@@ -41,7 +41,7 @@ export default function Edit({ attributes, setAttributes }) {
 		debounce(async (url, setAttributes) => {
 			try {
 				const data = await apiFetch({
-					path: `/wpogc/v1/og?url=${encodeURIComponent(url)}`,
+					path: `/wpogc/v1/og?url=${encodeURIComponent(url)}&nonce=${wpogc.nonce}`,
 				});
 				setAttributes({
 					ogTitle: data.title || '',

@@ -66,6 +66,9 @@ class WP_Open_Graph_Card {
     public function init() {
         // Register block
         register_block_type(WPOG_CARD_PLUGIN_DIR . 'build/block.json');
+
+        // Enqueue scripts and localize data
+        add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets']);
     }
 
     /**
@@ -91,6 +94,11 @@ class WP_Open_Graph_Card {
                     'required' => true,
                     'validate_callback' => [$this, 'validate_url'],
                     'sanitize_callback' => 'esc_url_raw',
+                ],
+                'nonce' => [
+                    'required' => true,
+                    'validate_callback' => [$this, 'validate_nonce'],
+                    'sanitize_callback' => 'sanitize_text_field',
                 ]
             ],
             'permission_callback' => [$this, 'check_permissions'],
@@ -109,6 +117,13 @@ class WP_Open_Graph_Card {
      */
     public function check_permissions() {
         return current_user_can('edit_posts');
+    }
+
+    /**
+     * Validate nonce parameter
+     */
+    public function validate_nonce($param) {
+        return wp_verify_nonce($param, 'wpogc_og_nonce');
     }
 
     /**
@@ -164,6 +179,16 @@ class WP_Open_Graph_Card {
         }
 
         return $og;
+    }
+
+    /**
+     * Enqueue editor assets and localize data
+     */
+    public function enqueue_editor_assets() {
+        wp_localize_script('wp-open-graph-card-og-card-editor-script', 'wpogc', [
+            'nonce' => wp_create_nonce('wpogc_og_nonce'),
+            'restUrl' => rest_url('wpogc/v1/og')
+        ]);
     }
 }
 

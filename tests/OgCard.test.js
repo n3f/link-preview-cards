@@ -21,7 +21,7 @@ describe('OgCard Component', () => {
 		expect(link).toHaveAttribute('href', url);
 		expect(link).toHaveAttribute('target', '_blank');
 		expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-		expect(link).toHaveClass('wpogc-card');
+		expect(link).toHaveClass('og-card');
 	});
 
 	test('should render with title and description', () => {

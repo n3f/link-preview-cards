@@ -77,6 +77,7 @@ The project includes multiple testing layers:
 - [x] LICENSE.txt
 - [x] Fix block display... it's not working
 - [ ] Add nonce to API endpoint
+- [ ] Add PHPUnit tests
 - [ ] Rate limiting API endpoint
 - [ ] Refresh button on block (to refresh the Open Graph data)
 - [ ] Add proper error handling if Open Graph data is not found

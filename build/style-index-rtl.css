@@ -1,1 +1,36 @@
-.og-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:scale(1.005)}.og-card:hover .og-card-title{text-decoration:underline}.wp-block-wp-open-graph-card-og-card .aligncenter{margin-right:auto;margin-left:auto}.wp-block-wp-open-graph-card-og-card .alignright{margin-right:auto;margin-left:0}.wp-block-wp-open-graph-card-og-card .alignleft{margin-right:0;margin-left:auto}.wp-block-wp-open-graph-card-og-card .alignwide .og-card{max-width:var(--wp--style--global--wide-size,1200px)}.wp-block-wp-open-graph-card-og-card .alignfull .og-card{max-width:none;width:100%}
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.og-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(1.005);
+}
+.og-card:hover .og-card-title {
+  text-decoration: underline;
+}
+
+.wp-block-wp-open-graph-card-og-card .aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+}
+.wp-block-wp-open-graph-card-og-card .alignright {
+  margin-right: auto;
+  margin-left: 0;
+}
+.wp-block-wp-open-graph-card-og-card .alignleft {
+  margin-left: auto;
+  margin-right: 0;
+}
+.wp-block-wp-open-graph-card-og-card .alignwide .og-card {
+  max-width: var(--wp--style--global--wide-size, 1200px);
+}
+.wp-block-wp-open-graph-card-og-card .alignfull .og-card {
+  max-width: none;
+  width: 100%;
+}
