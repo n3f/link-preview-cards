@@ -75,7 +75,8 @@ The project includes multiple testing layers:
 - [x] README.txt (WordPress.org format)
 - [x] README.md (Development info)
 - [x] LICENSE.txt
-- [ ] Fix block display... it's not working
+- [ ] configure jest for ESM modules.
+- [x] Fix block display... it's not working
 - [ ] Add nonce to API endpoint
 - [ ] Rate limiting API endpoint
 - [ ] Refresh button on block (to refresh the Open Graph data)

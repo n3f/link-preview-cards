@@ -29,7 +29,7 @@ import OgCard from './OgCard';
 
 // Wait for DOMContentLoaded to ensure all blocks are present
 document.addEventListener('DOMContentLoaded', () => {
-    const blocks = document.querySelectorAll('.wp-block-wpogc-open-graph-card');
+    const blocks = document.querySelectorAll('.wp-block-wp-open-graph-card-og-card');
     blocks.forEach((el) => {
         const url = el.getAttribute('data-url');
         const ogTitle = el.getAttribute('data-og-title');

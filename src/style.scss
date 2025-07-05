@@ -11,19 +11,19 @@
 // 	padding: 2px;
 // }
 
-.wpogc-card:hover {
+.og-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 //   transform: translateY(-1px);
   transform: scale(1.005);
 //   transform: translateY(-1px) scale(1.01);
-  .wpogc-title {
+  .og-card-title {
 	text-decoration: underline;
   }
 }
 
-.wp-block-wpogc-open-graph-card {
+.wp-block-wp-open-graph-card-og-card {
 	// Default width for normal alignment
-	// .wpogc-card {
+	// .og-card {
 	// 	max-width: 500px;
 	// 	width: 100%;
 	// }
@@ -44,13 +44,13 @@
 	}
 
 	.alignwide {
-		.wpogc-card {
+		.og-card {
 			max-width: var(--wp--style--global--wide-size, 1200px); // Uses WordPress wide size
 		}
 	}
 
 	.alignfull {
-		.wpogc-card {
+		.og-card {
 			max-width: none; // Full width
 			width: 100%;
 		}

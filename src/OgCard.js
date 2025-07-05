@@ -5,7 +5,7 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="wpogc-card"
+            className="og-card"
             style={{
                 display: 'block',
                 border: '1px solid #ccc',
@@ -32,11 +32,11 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                 />
             )}
             <div style={{ padding: 16 }}>
-                <div className="wpogc-title" style={{ fontWeight: 'bold', fontSize: '1.1em', marginBottom: 8 }}>
+                <div className="og-card-title" style={{ fontWeight: 'bold', fontSize: '1.1em', marginBottom: 8 }}>
                     {ogTitle || url}
                 </div>
                 {ogDescription && (
-                    <div style={{ color: '#555', marginBottom: 12 }}>
+                    <div className="og-card-description" style={{ color: '#555', marginBottom: 12 }}>
                         {ogDescription}
                     </div>
                 )}
