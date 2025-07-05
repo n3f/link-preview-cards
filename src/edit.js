@@ -1,0 +1,101 @@
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+import { useBlockProps } from '@wordpress/block-editor';
+import { TextControl, Card, CardBody } from '@wordpress/components';
+import { useEffect, useRef } from 'react';
+import debounce from 'lodash.debounce';
+import apiFetch from '@wordpress/api-fetch';
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+import './editor.scss';
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @return {Element} Element to render.
+ */
+export default function Edit({ attributes, setAttributes }) {
+	const { url, ogTitle, ogDescription, ogImage } = attributes;
+
+	const debouncedFetch = useRef(
+		debounce(async (url, setAttributes) => {
+			try {
+				const data = await apiFetch({
+					path: `/wpogc/v1/og?url=${encodeURIComponent(url)}`,
+				});
+				setAttributes({
+					ogTitle: data.title || '',
+					ogDescription: data.description || '',
+					ogImage: data.image || ''
+				});
+			} catch (e) {
+				setAttributes({
+					ogTitle: '',
+					ogDescription: '',
+					ogImage: ''
+				});
+			}
+		}, 600)
+	).current;
+
+	useEffect(() => {
+		if (!url) return;
+		debouncedFetch(url, setAttributes);
+		// Cleanup on unmount
+		return () => debouncedFetch.cancel();
+	}, [url]);
+
+	return (
+		<div {...useBlockProps()}>
+			<TextControl
+				label="Paste a URL to preview"
+				value={url}
+				onChange={(url) => setAttributes({ url })}
+				placeholder="https://example.com"
+			/>
+			{url && (
+				<Card style={{ marginTop: '1em', maxWidth: 500 }}>
+					<CardBody>
+						<div style={{ display: 'flex', gap: 16 }}>
+							<img
+								src={ogImage || "https://placehold.co/120x120"}
+								alt=""
+								style={{ width: 120, height: 120, objectFit: 'cover' }}
+							/>
+							<div>
+								<div style={{ fontWeight: 'bold', fontSize: '1.1em' }}>
+									{ogTitle || "No Open Graph title yet"}
+								</div>
+								<div style={{ color: '#555', marginTop: 8 }}>
+									{ogDescription || "No Open Graph description yet."}
+								</div>
+								<div style={{ color: '#888', marginTop: 8, fontSize: '0.9em' }}>
+									{url.replace(/^https?:\/\//, '').split('/')[0]}
+								</div>
+							</div>
+						</div>
+					</CardBody>
+				</Card>
+			)}
+		</div>
+	);
+}
