@@ -7,7 +7,8 @@
     "stop": "wp-env stop",
     "destroy": "wp-env destroy",
     "reset": "wp-env reset",
-    "test": "wp-env run tests phpunit",
+    "test": "wp-env run tests-cli php /var/www/html/wp-content/plugins/wp-open-graph/tests/test-api.php",
+    "test:unit": "php tests/test-api.php",
     "shell": "wp-env run cli wp shell",
     "build": "wp-scripts build",
     "block-start": "wp-scripts start"
