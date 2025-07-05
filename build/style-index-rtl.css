@@ -14,3 +14,36 @@
 .wpogc-card:hover .wpogc-title {
   text-decoration: underline;
 }
+
+.wp-block-wpogc-open-graph-card .aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+}
+.wp-block-wpogc-open-graph-card .alignright {
+  margin-right: auto;
+  margin-left: 0;
+}
+.wp-block-wpogc-open-graph-card .alignleft {
+  margin-left: auto;
+  margin-right: 0;
+}
+.wp-block-wpogc-open-graph-card .alignwide,
+.wp-block-wpogc-open-graph-card .alignfull {
+  width: 100%;
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.aligncenter .wpogc-card {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.alignleft .wpogc-card {
+  margin-left: auto;
+}
+
+.alignright .wpogc-card {
+  margin-right: auto;
+}

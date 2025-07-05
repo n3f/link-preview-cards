@@ -20,3 +20,39 @@
 	text-decoration: underline;
   }
 }
+
+.wp-block-wpogc-open-graph-card {
+	.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.alignright {
+		margin-left: auto;
+		margin-right: 0;
+	}
+
+	.alignleft {
+		margin-right: auto;
+		margin-left: 0;
+	}
+
+	.alignwide,
+	.alignfull {
+		width: 100%;
+		max-width: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.aligncenter .wpogc-card {
+  margin-left: auto;
+  margin-right: auto;
+}
+.alignleft .wpogc-card {
+  margin-right: auto;
+}
+.alignright .wpogc-card {
+  margin-left: auto;
+}

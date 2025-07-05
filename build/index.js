@@ -474,7 +474,7 @@ function OgCard({
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpogc/open-graph-card","title":"Open Graph Card","category":"embed","icon":"format-image","description":"Display a card for any URL with Open Graph data.","keywords":["open graph","card","embed","block"],"version":"0.1.0","textdomain":"wpogc","editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css","viewScript":"file:./view.js","attributes":{"url":{"type":"string","default":""},"ogTitle":{"type":"string","default":""},"ogDescription":{"type":"string","default":""},"ogImage":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpogc/open-graph-card","title":"Open Graph Card","category":"embed","icon":"format-image","description":"Display a card for any URL with Open Graph data.","keywords":["open graph","card","embed","block"],"version":"0.1.0","textdomain":"wpogc","editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css","viewScript":"file:./view.js","attributes":{"url":{"type":"string","default":""},"ogTitle":{"type":"string","default":""},"ogDescription":{"type":"string","default":""},"ogImage":{"type":"string","default":""}},"supports":{"align":["left","center","right","wide","full"]}}');
 
 /***/ }),
 
