@@ -15,35 +15,35 @@ A WordPress plugin that provides a Gutenberg block for displaying Open Graph car
 1. Clone the repository
 2. Install dependencies:
    ```bash
-   npm install
+   bun install
    ```
 
 ### Development Commands
 
 ```bash
 # Start development environment
-npm run start
+bun run start
 
 # Build for production
-npm run build
+bun run build
 
 # Start block development (hot reload)
-npm run block-start
+bun run block-start
 
 # Run unit tests
-npm run test:unit
+bun run test:unit
 
 # Run PHP tests
-npm run test:php
+bun run test:php
 
 # Run Playwright tests
-npm run test:playwright
+bun run test:playwright
 
 # Stop development environment
-npm run stop
+bun run stop
 
 # Reset development environment
-npm run reset
+bun run reset
 ```
 
 ### Project Structure
@@ -51,11 +51,11 @@ npm run reset
 ```
 wp-open-graph/
 ├── src/                    # Block source files
-│   ├── block.json         # Block configuration
-│   ├── edit.js            # Editor component
-│   ├── save.js            # Frontend render
-│   ├── view.js            # Frontend JavaScript
-│   └── style.scss         # Styles
+│   ├── block.json          # Block configuration
+│   ├── edit.js             # Editor component
+│   ├── save.js             # Frontend render
+│   ├── view.js             # Frontend JavaScript
+│   └── style.scss          # Styles
 ├── build/                  # Built files (generated)
 ├── tests/                  # PHP tests
 ├── specs/                  # Playwright tests
@@ -75,7 +75,6 @@ The project includes multiple testing layers:
 - [x] README.txt (WordPress.org format)
 - [x] README.md (Development info)
 - [x] LICENSE.txt
-- [ ] configure jest for ESM modules.
 - [x] Fix block display... it's not working
 - [ ] Add nonce to API endpoint
 - [ ] Rate limiting API endpoint
