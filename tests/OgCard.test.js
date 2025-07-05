@@ -60,4 +60,43 @@ describe('OgCard Component', () => {
 		// The title div should display the URL
 		expect(screen.getByText(url)).toBeInTheDocument();
 	});
+
+	test('should handle malformed URLs gracefully', () => {
+		render(<OgCard url="not-a-url" />);
+		expect(screen.getByRole('link')).toHaveAttribute('href', 'not-a-url');
+		// Test that the component renders without crashing
+		expect(screen.getByRole('link')).toBeInTheDocument();
+	});
+
+	test('should handle very long titles', () => {
+		const longTitle = 'a'.repeat(200);
+		render(<OgCard url="https://example.com" ogTitle={longTitle} />);
+		expect(screen.getByText(longTitle)).toBeInTheDocument();
+	});
+
+	test('should handle missing images gracefully', () => {
+		render(<OgCard url="https://example.com" ogImage="https://invalid-image.jpg" />);
+		// Should not crash when image fails to load
+		expect(screen.getByRole('link')).toBeInTheDocument();
+	});
+
+	test('should handle XSS in content', () => {
+		const maliciousTitle = '<script>alert("xss")</script>';
+		render(<OgCard url="https://example.com" ogTitle={maliciousTitle} />);
+		expect(screen.getByText(maliciousTitle)).toBeInTheDocument();
+		// Verify the script tag is not executed (rendered as text)
+		expect(screen.queryByText('xss')).not.toBeInTheDocument();
+	});
+
+	test('should handle very long URLs', () => {
+		const longUrl = 'https://example.com/' + 'a'.repeat(1000);
+		render(<OgCard url={longUrl} />);
+		expect(screen.getByRole('link')).toHaveAttribute('href', longUrl);
+	});
+
+	test('should handle special characters in URLs', () => {
+		const urlWithSpecialChars = 'https://example.com/path?param=value&another=test#fragment';
+		render(<OgCard url={urlWithSpecialChars} />);
+		expect(screen.getByRole('link')).toHaveAttribute('href', urlWithSpecialChars);
+	});
 });
