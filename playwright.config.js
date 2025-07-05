@@ -23,6 +23,16 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    /* Take screenshot on failure */
+    screenshot: 'only-on-failure',
+
+    /* Record video on failure */
+    video: 'retain-on-failure',
+
+    /* Increase timeouts for WordPress */
+    navigationTimeout: 30000,
+    actionTimeout: 15000,
   },
 
   /* Configure projects for major browsers */
@@ -41,12 +51,33 @@ module.exports = defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+
+    /* Test against mobile viewports. */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 12'] },
+    // },
+
+    /* Test against branded browsers. */
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    // },
   ],
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'echo "WordPress should be running on localhost:8889"',
+    command: 'bun run start',
     url: 'http://localhost:8889',
     reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
   },
 });
