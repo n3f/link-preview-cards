@@ -10,3 +10,13 @@
 // 	color: #fff;
 // 	padding: 2px;
 // }
+
+.wpogc-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+//   transform: translateY(-1px);
+  transform: scale(1.005);
+//   transform: translateY(-1px) scale(1.01);
+  .wpogc-title {
+	text-decoration: underline;
+  }
+}

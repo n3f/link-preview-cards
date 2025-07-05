@@ -16,6 +16,7 @@ import { TextControl, Card, CardBody } from '@wordpress/components';
 import { useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import apiFetch from '@wordpress/api-fetch';
+import OgCard from './OgCard';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -72,30 +73,7 @@ export default function Edit({ attributes, setAttributes }) {
 				onChange={(url) => setAttributes({ url })}
 				placeholder="https://example.com"
 			/>
-			{url && (
-				<Card style={{ marginTop: '1em', maxWidth: 500 }}>
-					<CardBody>
-						<div style={{ display: 'flex', gap: 16 }}>
-							<img
-								src={ogImage || "https://placehold.co/120x120"}
-								alt=""
-								style={{ width: 120, height: 120, objectFit: 'cover' }}
-							/>
-							<div>
-								<div style={{ fontWeight: 'bold', fontSize: '1.1em' }}>
-									{ogTitle || "No Open Graph title yet"}
-								</div>
-								<div style={{ color: '#555', marginTop: 8 }}>
-									{ogDescription || "No Open Graph description yet."}
-								</div>
-								<div style={{ color: '#888', marginTop: 8, fontSize: '0.9em' }}>
-									{url.replace(/^https?:\/\//, '').split('/')[0]}
-								</div>
-							</div>
-						</div>
-					</CardBody>
-				</Card>
-			)}
+			{url && <OgCard url={url} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage} />}
 		</div>
 	);
 }

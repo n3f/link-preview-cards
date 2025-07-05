@@ -7,7 +7,7 @@ Author: You
 */
 
 add_action('init', function() {
-    register_block_type(__DIR__ . '/block.json');
+    register_block_type(__DIR__ . '/build/block.json');
 });
 
 add_action('rest_api_init', function() {

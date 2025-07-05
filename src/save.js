@@ -15,10 +15,15 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	// Only output a wrapper div with block props and data attributes
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Open Graph Card – hello from the saved content!' }
-		</p>
+		<div
+			{...useBlockProps.save()}
+			data-url={attributes.url}
+			data-og-title={attributes.ogTitle}
+			data-og-description={attributes.ogDescription}
+			data-og-image={attributes.ogImage}
+		/>
 	);
 }
