@@ -11,7 +11,6 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                 border: '1px solid #ccc',
                 borderRadius: 8,
                 padding: 0,
-                maxWidth: 500,
                 textDecoration: 'none',
                 color: 'inherit',
                 overflow: 'hidden',
@@ -24,7 +23,7 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                     alt=""
                     style={{
                         width: '100%',
-                        height: 200,
+                        height: 300,
                         objectFit: 'cover',
                         display: 'block',
                         borderTopLeftRadius: 8,

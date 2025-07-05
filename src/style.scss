@@ -22,6 +22,12 @@
 }
 
 .wp-block-wpogc-open-graph-card {
+	// Default width for normal alignment
+	// .wpogc-card {
+	// 	max-width: 500px;
+	// 	width: 100%;
+	// }
+
 	.aligncenter {
 		margin-left: auto;
 		margin-right: auto;
@@ -37,22 +43,17 @@
 		margin-left: 0;
 	}
 
-	.alignwide,
+	.alignwide {
+		.wpogc-card {
+			max-width: var(--wp--style--global--wide-size, 1200px); // Uses WordPress wide size
+		}
+	}
+
 	.alignfull {
-		width: 100%;
-		max-width: none;
-		margin-left: auto;
-		margin-right: auto;
+		.wpogc-card {
+			max-width: none; // Full width
+			width: 100%;
+		}
 	}
 }
 
-.aligncenter .wpogc-card {
-  margin-left: auto;
-  margin-right: auto;
-}
-.alignleft .wpogc-card {
-  margin-right: auto;
-}
-.alignright .wpogc-card {
-  margin-left: auto;
-}

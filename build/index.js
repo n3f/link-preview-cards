@@ -419,7 +419,6 @@ function OgCard({
       border: '1px solid #ccc',
       borderRadius: 8,
       padding: 0,
-      maxWidth: 500,
       textDecoration: 'none',
       color: 'inherit',
       overflow: 'hidden',
@@ -430,7 +429,7 @@ function OgCard({
       alt: "",
       style: {
         width: '100%',
-        height: 200,
+        height: 300,
         objectFit: 'cover',
         display: 'block',
         borderTopLeftRadius: 8,
