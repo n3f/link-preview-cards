@@ -21,7 +21,15 @@
   }
 }
 
-.wp-block-wp-open-graph-card-og-card {
+// .og-card {
+// 	// > div {
+// 	// 	// this darkens the base color by 5%
+// 	// 	// background-color: lch( from var(--wp--preset--color--base) calc(l - 5) 0 0);
+// 	// 	// background-color: var(--wp--preset--color--accent-1);
+// 	// }
+// }
+
+.wp-block-open-graph-card-og-card {
 	// Default width for normal alignment
 	// .og-card {
 	// 	max-width: 500px;

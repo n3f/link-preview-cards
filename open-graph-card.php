@@ -11,10 +11,9 @@
  * Author URI: https://github.com/n3f
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wp-open-graph-card
- * Slug: wp-open-graph-card
+ * Text Domain: open-graph-card
  *
- * @package WPOpenGraphCard
+ * @package OpenGraphCard
  */
 
 
@@ -39,15 +38,15 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('WPOG_CARD_VERSION', '0.1.0');
-define('WPOG_CARD_PLUGIN_FILE', __FILE__);
-define('WPOG_CARD_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('WPOG_CARD_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('OGC_VERSION', '0.1.0');
+define('OGC_PLUGIN_FILE', __FILE__);
+define('OGC_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('OGC_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 /**
  * Main plugin class
  */
-class WP_Open_Graph_Card {
+class Open_Graph_Card {
 
     /**
      * Constructor
@@ -63,7 +62,7 @@ class WP_Open_Graph_Card {
      */
     public function init() {
         // Register block
-        register_block_type(WPOG_CARD_PLUGIN_DIR . 'build/block.json');
+        register_block_type(OGC_PLUGIN_DIR . 'build/block.json');
 
         // Enqueue scripts and localize data
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets']);
@@ -74,9 +73,9 @@ class WP_Open_Graph_Card {
      */
     public function load_textdomain() {
         load_plugin_textdomain(
-            'wp-open-graph-card',
+            'open-graph-card',
             false,
-            dirname(plugin_basename(WPOG_CARD_PLUGIN_FILE)) . '/languages'
+            dirname(plugin_basename(OGC_PLUGIN_FILE)) . '/languages'
         );
     }
 
@@ -84,7 +83,7 @@ class WP_Open_Graph_Card {
      * Register REST API routes
      */
     public function register_rest_routes() {
-        register_rest_route('wpogc/v1', '/og', [
+        register_rest_route('ogc/v1', '/og', [
             'methods' => 'GET',
             'callback' => [$this, 'fetch_og_data'],
             'args' => [
@@ -121,7 +120,7 @@ class WP_Open_Graph_Card {
      * Validate nonce parameter
      */
     public function validate_nonce($param) {
-        return wp_verify_nonce($param, 'wpogc_og_nonce');
+        return wp_verify_nonce($param, 'ogc_og_nonce');
     }
 
     /**
@@ -134,7 +133,7 @@ class WP_Open_Graph_Card {
         if (!wp_http_validate_url($url)) {
             return new WP_Error(
                 'invalid_url',
-                __('Invalid URL provided', 'wp-open-graph-card'),
+                __('Invalid URL provided', 'open-graph-card'),
                 ['status' => 400]
             );
         }
@@ -147,7 +146,7 @@ class WP_Open_Graph_Card {
         if (is_wp_error($response)) {
             return new WP_Error(
                 'og_fetch_failed',
-                __('Failed to fetch URL', 'wp-open-graph-card'),
+                __('Failed to fetch URL', 'open-graph-card'),
                 ['status' => 400]
             );
         }
@@ -183,15 +182,15 @@ class WP_Open_Graph_Card {
      * Enqueue editor assets and localize data
      */
     public function enqueue_editor_assets() {
-        wp_localize_script('wp-open-graph-card-og-card-editor-script', 'wpogc', [
-            'nonce' => wp_create_nonce('wpogc_og_nonce'),
-            'restUrl' => rest_url('wpogc/v1/og')
+        wp_localize_script('open-graph-card-og-card-editor-script', 'ogc', [
+            'nonce' => wp_create_nonce('ogc_og_nonce'),
+            'restUrl' => rest_url('ogc/v1/og')
         ]);
     }
 }
 
 // Initialize the plugin
-new WP_Open_Graph_Card();
+new Open_Graph_Card();
 
 // Activation hook
 register_activation_hook(__FILE__, function() {

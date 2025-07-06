@@ -40,7 +40,7 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                         {ogDescription}
                     </div>
                 )}
-                <div style={{ fontSize: '0.85em', color: '#888' }}>
+                <div className="og-card-url" style={{ fontSize: '0.85em', color: '#888' }}>
                     {url.replace(/^https?:\/\//, '').split('/')[0]}
                 </div>
             </div>

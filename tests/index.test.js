@@ -13,7 +13,7 @@ describe('Open Graph Card Block', () => {
 		// Test that we can import the block.json file
 		const metadata = require('../src/block.json');
 		expect(metadata).toBeDefined();
-		expect(metadata.name).toBe('wp-open-graph-card/og-card');
+		expect(metadata.name).toBe('open-graph-card/og-card');
 		expect(metadata.title).toBe('Open Graph Card');
 	});
 

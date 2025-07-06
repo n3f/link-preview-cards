@@ -38,8 +38,8 @@ export async function addOpenGraphCardBlock(page) {
     await page.keyboard.press('o');
     // await page.keyboard.type('Open Graph Card');
 
-    await page.waitForSelector('button[id="components-autocomplete-item-0-block-wp-open-graph-card/og-card"]');
-    await page.click('button[id="components-autocomplete-item-0-block-wp-open-graph-card/og-card"]');
+    await page.waitForSelector('button[id="components-autocomplete-item-0-block-open-graph-card/og-card"]');
+    await page.click('button[id="components-autocomplete-item-0-block-open-graph-card/og-card"]');
 }
 
 /**
@@ -59,7 +59,7 @@ export function getEditorFrame(page) {
  * @param {import('@playwright/test').Frame} editorFrame
  */
 export async function waitForBlockLoaded(editorFrame) {
-    await editorFrame.waitForSelector('.wp-block-wp-open-graph-card-og-card', { timeout: 10000 });
+    await editorFrame.waitForSelector('.wp-block-open-graph-card-og-card', { timeout: 10000 });
 }
 
 /**
@@ -68,9 +68,9 @@ export async function waitForBlockLoaded(editorFrame) {
  * @param {string} url
  */
 export async function fillUrlAndWaitForPreview(editorFrame, url = 'https://example.com') {
-    const urlInput = editorFrame.locator('.wp-block-wp-open-graph-card-og-card input[type="text"]').first();
+    const urlInput = editorFrame.locator('.wp-block-open-graph-card-og-card input[type="text"]').first();
     await urlInput.fill(url);
-    await editorFrame.waitForSelector('.wpogc-card, .og-card, [class*="card"]', { timeout: 10000 });
+    await editorFrame.waitForSelector('.ogc-card, .og-card, [class*="card"]', { timeout: 10000 });
 }
 
 /**
@@ -100,7 +100,7 @@ export async function publishPostAndView(page) {
  * @param {string} expectedUrl
  */
 export async function verifyFrontendBlock(page, expectedUrl = 'https://example.com') {
-    const block = page.locator('.wp-block-wp-open-graph-card-og-card');
+    const block = page.locator('.wp-block-open-graph-card-og-card');
     console.log(block);
     // await expect(block).toBeVisible({ timeout: 10000 });
     await expect(block).toHaveAttribute('data-url', expectedUrl, { timeout: 10000 });

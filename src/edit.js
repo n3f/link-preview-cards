@@ -41,7 +41,7 @@ export default function Edit({ attributes, setAttributes }) {
 		debounce(async (url, setAttributes) => {
 			try {
 				const data = await apiFetch({
-					path: `/wpogc/v1/og?url=${encodeURIComponent(url)}&nonce=${wpogc.nonce}`,
+					path: `${ogc.restUrl}?url=${encodeURIComponent(url)}&nonce=${ogc.nonce}`,
 				});
 				setAttributes({
 					ogTitle: data.title || '',
@@ -68,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...useBlockProps()}>
 			<TextControl
-				label={__("Paste a URL to preview", "wp-open-graph-card")}
+				label={__("Paste a URL to preview", "open-graph-card")}
 				value={url}
 				onChange={(url) => setAttributes({ url })}
 				placeholder="https://example.com"

@@ -23,19 +23,19 @@ test.describe('Open Graph Card Block', () => {
 	});
 
 	test('should be able to add Open Graph Card block to a post', async ({ page }) => {
-		const block = editorFrame.locator('.wp-block-wp-open-graph-card-og-card').first();
+		const block = editorFrame.locator('.wp-block-open-graph-card-og-card').first();
 		await expect(block).toBeVisible({ timeout: 10000 });
 	});
 
 	test('should display URL input field when block is added', async ({ page }) => {
-		const urlInput = editorFrame.locator('.wp-block-wp-open-graph-card-og-card input[type="text"]').first();
+		const urlInput = editorFrame.locator('.wp-block-open-graph-card-og-card input[type="text"]').first();
 		await expect(urlInput).toBeVisible({ timeout: 10000 });
 	});
 
 	test('should show preview when URL is entered', async ({ page }) => {
 		await fillUrlAndWaitForPreview(editorFrame, 'https://example.com');
 
-		const preview = editorFrame.locator('.wpogc-card, .og-card, [class*="card"]').first();
+		const preview = editorFrame.locator('.ogc-card, .og-card, [class*="card"]').first();
 		await expect(preview).toBeVisible({ timeout: 10000 });
 	});
 });

@@ -49,7 +49,7 @@ bun run reset
 ### Project Structure
 
 ```
-wp-open-graph-card/
+open-graph-card/
 ├── src/                    # Block source files
 │   ├── block.json          # Block configuration
 │   ├── edit.js             # Editor component
@@ -59,7 +59,7 @@ wp-open-graph-card/
 ├── build/                  # Built files (generated)
 ├── tests/                  # PHP tests
 ├── specs/                  # Playwright tests
-└── wp-open-graph-card.php # Main plugin file
+└── open-graph-card.php # Main plugin file
 ```
 
 ### Testing
@@ -76,7 +76,8 @@ The project includes multiple testing layers:
 - [x] README.md (Development info)
 - [x] LICENSE.txt
 - [x] Fix block display... it's not working
-- [ ] Add nonce to API endpoint
+- [x] Add nonce to API endpoint
+- [ ] Configure color palette (block settings)
 - [ ] Add PHPUnit tests
 - [ ] Rate limiting API endpoint
 - [ ] Refresh button on block (to refresh the Open Graph data)

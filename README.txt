@@ -38,7 +38,7 @@ automatically fetch and display the Open Graph data in a beautiful card format.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/wp-open-graph-card` directory, or install the plugin through the WordPress admin interface.
+1. Upload the plugin files to the `/wp-content/plugins/open-graph-card` directory, or install the plugin through the WordPress admin interface.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Use the "Open Graph Card" block in the Gutenberg editor
 
