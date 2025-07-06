@@ -1,4 +1,4 @@
-# WP Open Graph Card
+# Open Graph Card
 
 A WordPress plugin that provides a Gutenberg block for displaying Open Graph cards from any URL.
 
@@ -49,7 +49,7 @@ bun run reset
 ### Project Structure
 
 ```
-wp-open-graph/
+wp-open-graph-card/
 ├── src/                    # Block source files
 │   ├── block.json          # Block configuration
 │   ├── edit.js             # Editor component

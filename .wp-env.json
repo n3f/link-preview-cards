@@ -1,6 +1,8 @@
 {
   "plugins": [
-    "."
+    ".",
+    "https://downloads.wordpress.org/plugin/plugin-check.latest-stable.zip",
+    "https://downloads.wordpress.org/plugin/create-block-theme.latest-stable.zip"
   ],
   "port": 8888,
   "testsPort": 8889,

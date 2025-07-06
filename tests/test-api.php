@@ -1,6 +1,6 @@
 <?php
 /**
- * Test cases for WP Open Graph Card API endpoint
+ * Test cases for Open Graph Card API endpoint
  */
 
 // Simple test function to validate OG data extraction

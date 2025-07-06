@@ -1,6 +1,6 @@
 <?php
 /**
- * Test cases for WP Open Graph Card nonce functionality
+ * Test cases for Open Graph Card nonce functionality
  */
 
 // Mock WordPress functions for testing
@@ -27,7 +27,7 @@ if (!function_exists('sanitize_text_field')) {
     function sanitize_text_field($str) {
         // WordPress sanitize_text_field removes script content too
         $str = preg_replace('/<script[^>]*>.*?<\/script>/is', '', $str);
-        return trim(strip_tags($str));
+        return trim(wp_strip_all_tags($str));
     }
 }
 

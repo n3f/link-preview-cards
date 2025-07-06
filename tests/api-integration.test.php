@@ -1,6 +1,6 @@
 <?php
 /**
- * Integration tests for WP Open Graph Card API with nonce
+ * Integration tests for Open Graph Card API with nonce
  */
 
 // Mock WordPress functions for testing
@@ -30,7 +30,7 @@ if (!function_exists('current_user_can')) {
 
 if (!function_exists('sanitize_text_field')) {
     function sanitize_text_field($str) {
-        return trim(strip_tags($str));
+        return trim(wp_strip_all_tags($str));
     }
 }
 

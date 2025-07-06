@@ -1,8 +1,8 @@
-=== WP Open Graph Card ===
+=== Open Graph Card ===
 Contributors: n3f
 Tags: open-graph, embed, block, gutenberg, social-media
 Requires at least: 5.0
-Tested up to: 6.8.1
+Tested up to: 6.8
 Requires PHP: 8.2
 Stable tag: 0.1.0
 License: GPLv2 or later
@@ -15,7 +15,7 @@ traditional embeds with rich social media previews.
 
 == Description ==
 
-WP Open Graph Card is a Gutenberg block that fetches and displays Open Graph
+Open Graph Card is a Gutenberg block that fetches and displays Open Graph
 data from any URL, creating beautiful social media-style cards instead of
 traditional embeds.
 

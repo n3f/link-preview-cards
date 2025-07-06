@@ -1,37 +1,36 @@
 <?php
 /**
- * Plugin Name: WP Open Graph Card
+ * Plugin Name: Open Graph Card
  * Plugin URI: https://github.com/n3f/wp-open-graph-card
  * Description: Gutenberg block for displaying Open Graph cards.
  * Version: 0.1.0
  * Requires at least: 5.0
- * Tested up to: 6.8.1
+ * Tested up to: 6.8
  * Requires PHP: 8.2
  * Author: Brent Nef
  * Author URI: https://github.com/n3f
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wp-open-graph-card
- * Domain Path: /languages
- * Network: false
+ * Slug: wp-open-graph-card
  *
  * @package WPOpenGraphCard
  */
 
 
 /*
-WP Open Graph Card is free software: you can redistribute it and/or modify
+Open Graph Card is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
 
-WP Open Graph Card is distributed in the hope that it will be useful,
+Open Graph Card is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with WP Open Graph Card. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+along with Open Graph Card. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
 // Prevent direct access
@@ -44,7 +43,6 @@ define('WPOG_CARD_VERSION', '0.1.0');
 define('WPOG_CARD_PLUGIN_FILE', __FILE__);
 define('WPOG_CARD_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WPOG_CARD_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('WPOG_CARD_TEXT_DOMAIN', 'wp-open-graph-card');
 
 /**
  * Main plugin class
@@ -76,7 +74,7 @@ class WP_Open_Graph_Card {
      */
     public function load_textdomain() {
         load_plugin_textdomain(
-            WPOG_CARD_TEXT_DOMAIN,
+            'wp-open-graph-card',
             false,
             dirname(plugin_basename(WPOG_CARD_PLUGIN_FILE)) . '/languages'
         );
@@ -136,7 +134,7 @@ class WP_Open_Graph_Card {
         if (!wp_http_validate_url($url)) {
             return new WP_Error(
                 'invalid_url',
-                __('Invalid URL provided', WPOG_CARD_TEXT_DOMAIN),
+                __('Invalid URL provided', 'wp-open-graph-card'),
                 ['status' => 400]
             );
         }
@@ -149,7 +147,7 @@ class WP_Open_Graph_Card {
         if (is_wp_error($response)) {
             return new WP_Error(
                 'og_fetch_failed',
-                __('Failed to fetch URL', WPOG_CARD_TEXT_DOMAIN),
+                __('Failed to fetch URL', 'wp-open-graph-card'),
                 ['status' => 400]
             );
         }
