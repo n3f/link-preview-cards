@@ -54,7 +54,6 @@ class Open_Graph_Card {
     public function __construct() {
         add_action('init', [$this, 'init']);
         add_action('rest_api_init', [$this, 'register_rest_routes']);
-        add_action('plugins_loaded', [$this, 'load_textdomain']);
     }
 
     /**
@@ -66,17 +65,6 @@ class Open_Graph_Card {
 
         // Enqueue scripts and localize data
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets']);
-    }
-
-    /**
-     * Load text domain for internationalization
-     */
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            'open-graph-card',
-            false,
-            dirname(plugin_basename(OGC_PLUGIN_FILE)) . '/languages'
-        );
     }
 
     /**
@@ -184,7 +172,6 @@ class Open_Graph_Card {
     public function enqueue_editor_assets() {
         wp_localize_script('open-graph-card-og-card-editor-script', 'ogc', [
             'nonce' => wp_create_nonce('ogc_og_nonce'),
-            'restUrl' => rest_url('ogc/v1/og')
         ]);
     }
 }
