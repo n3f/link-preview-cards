@@ -1,5 +1,5 @@
 /**
- * Common test helpers for WordPress Open Graph Card tests
+ * Common test helpers for Link Preview Cards tests
  */
 
 import { expect } from '@playwright/test';
@@ -29,17 +29,16 @@ export async function navigateToNewPost(page) {
 }
 
 /**
- * Add Open Graph Card block to the editor
+ * Add Link Preview Cards block to the editor
  * @param {import('@playwright/test').Page} page
  */
 export async function addOpenGraphCardBlock(page) {
     await page.click('.block-editor-page');
     await page.keyboard.press('/');
-    await page.keyboard.press('o');
-    // await page.keyboard.type('Open Graph Card');
+    await page.keyboard.press('l');
 
-    await page.waitForSelector('button[id="components-autocomplete-item-0-block-open-graph-card/og-card"]');
-    await page.click('button[id="components-autocomplete-item-0-block-open-graph-card/og-card"]');
+    await page.waitForSelector('button[id="components-autocomplete-item-0-block-link-preview-cards/og-card"]');
+    await page.click('button[id="components-autocomplete-item-0-block-link-preview-cards/og-card"]');
 }
 
 /**
@@ -59,7 +58,7 @@ export function getEditorFrame(page) {
  * @param {import('@playwright/test').Frame} editorFrame
  */
 export async function waitForBlockLoaded(editorFrame) {
-    await editorFrame.waitForSelector('.wp-block-open-graph-card-og-card', { timeout: 10000 });
+    	await editorFrame.waitForSelector('.wp-block-link-preview-cards-og-card', { timeout: 10000 });
 }
 
 /**
@@ -68,7 +67,7 @@ export async function waitForBlockLoaded(editorFrame) {
  * @param {string} url
  */
 export async function fillUrlAndWaitForPreview(editorFrame, url = 'https://example.com') {
-    const urlInput = editorFrame.locator('.wp-block-open-graph-card-og-card input[type="text"]').first();
+    	const urlInput = editorFrame.locator('.wp-block-link-preview-cards-og-card input[type="text"]').first();
     await urlInput.fill(url);
     await editorFrame.waitForSelector('.ogc-card, .og-card, [class*="card"]', { timeout: 10000 });
 }
@@ -100,7 +99,7 @@ export async function publishPostAndView(page) {
  * @param {string} expectedUrl
  */
 export async function verifyFrontendBlock(page, expectedUrl = 'https://example.com') {
-    const block = page.locator('.wp-block-open-graph-card-og-card');
+    	const block = page.locator('.wp-block-link-preview-cards-og-card');
     console.log(block);
     // await expect(block).toBeVisible({ timeout: 10000 });
     await expect(block).toHaveAttribute('data-url', expectedUrl, { timeout: 10000 });

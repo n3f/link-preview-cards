@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Open Graph Card
- * Plugin URI: https://github.com/n3f/wp-open-graph-card
- * Description: Gutenberg block for displaying Open Graph cards.
- * Version: 0.1.0
+ * Plugin Name: Link Preview Cards
+ * Plugin URI: https://github.com/n3f/link-preview-cards
+ * Description: Gutenberg block for displaying link preview cards.
+ * Version: 0.1.1
  * Requires at least: 5.0
  * Tested up to: 6.8
  * Requires PHP: 8.2
@@ -11,25 +11,24 @@
  * Author URI: https://github.com/n3f
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: open-graph-card
+ * Text Domain: link-preview-cards
  *
- * @package OpenGraphCard
+ * @package LinkPreviewCards
  */
 
-
 /*
-Open Graph Card is free software: you can redistribute it and/or modify
+Link Preview Cards is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
 
-Open Graph Card is distributed in the hope that it will be useful,
+Link Preview Cards is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Open Graph Card. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+along with Link Preview Cards. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
 // Prevent direct access
@@ -38,15 +37,12 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('OGC_VERSION', '0.1.0');
-define('OGC_PLUGIN_FILE', __FILE__);
-define('OGC_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('OGC_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('LPC_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 /**
  * Main plugin class
  */
-class Open_Graph_Card {
+class Link_Preview_Cards {
 
     /**
      * Constructor
@@ -61,7 +57,7 @@ class Open_Graph_Card {
      */
     public function init() {
         // Register block
-        register_block_type(OGC_PLUGIN_DIR . 'build/block.json');
+        register_block_type(LPC_PLUGIN_DIR . 'build/block.json');
 
         // Enqueue scripts and localize data
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets']);
@@ -73,7 +69,7 @@ class Open_Graph_Card {
     public function register_rest_routes() {
         register_rest_route('ogc/v1', '/og', [
             'methods' => 'GET',
-            'callback' => [$this, 'fetch_og_data'],
+            'callback' => [$this, 'fetch_link_preview_data'],
             'args' => [
                 'url' => [
                     'required' => true,
@@ -112,16 +108,16 @@ class Open_Graph_Card {
     }
 
     /**
-     * Fetch Open Graph data from URL
+     * Fetch link preview data from URL
      */
-    public function fetch_og_data($request) {
+    public function fetch_link_preview_data($request) {
         $url = $request->get_param('url');
 
         // Additional security check
         if (!wp_http_validate_url($url)) {
             return new WP_Error(
                 'invalid_url',
-                __('Invalid URL provided', 'open-graph-card'),
+                __('Invalid URL provided', 'link-preview-cards'),
                 ['status' => 400]
             );
         }
@@ -134,7 +130,7 @@ class Open_Graph_Card {
         if (is_wp_error($response)) {
             return new WP_Error(
                 'og_fetch_failed',
-                __('Failed to fetch URL', 'open-graph-card'),
+                __('Failed to fetch URL', 'link-preview-cards'),
                 ['status' => 400]
             );
         }
@@ -170,14 +166,14 @@ class Open_Graph_Card {
      * Enqueue editor assets and localize data
      */
     public function enqueue_editor_assets() {
-        wp_localize_script('open-graph-card-og-card-editor-script', 'ogc', [
+        wp_localize_script('link-preview-cards-og-card-editor-script', 'ogc', [
             'nonce' => wp_create_nonce('ogc_og_nonce'),
         ]);
     }
 }
 
 // Initialize the plugin
-new Open_Graph_Card();
+new Link_Preview_Cards();
 
 // Activation hook
 register_activation_hook(__FILE__, function() {

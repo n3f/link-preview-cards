@@ -15,7 +15,7 @@ import {
     verifyFrontendBlock
 } from './helpers';
 
-test.describe('Frontend Open Graph Card Rendering', () => {
+test.describe('Frontend Link Preview Cards Rendering', () => {
     let editorFrame;
 
     test.beforeEach(async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('Frontend Open Graph Card Rendering', () => {
         await waitForBlockLoaded(editorFrame);
     });
 
-    test('should render Open Graph Card blocks on the frontend', async ({ page }) => {
+    test('should render Link Preview Card blocks on the frontend', async ({ page }) => {
         await fillUrlAndWaitForPreview(editorFrame, 'https://example.com');
         await publishPostAndView(page);
         await verifyFrontendBlock(page, 'https://example.com');

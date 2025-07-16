@@ -1,30 +1,30 @@
-=== Open Graph Card ===
+=== Link Preview Cards ===
 Contributors: n3f
 Tags: open-graph, embed, block, gutenberg, social-media
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Plugin URI: https://github.com/n3f/wp-open-graph-card
+Plugin URI: https://github.com/n3f/link-preview-cards
 Author URI: https://github.com/n3f
 
-A Gutenberg block that displays Open Graph cards for any URL, replacing
+A Gutenberg block that displays link preview cards for any URL, replacing
 traditional embeds with rich social media previews.
 
 == Description ==
 
-Open Graph Card is a Gutenberg block that fetches and displays Open Graph
+Link Preview Cards is a Gutenberg block that fetches and displays link preview
 data from any URL, creating beautiful social media-style cards instead of
 traditional embeds.
 
 **Features:**
 
-* Automatically fetches Open Graph metadata (title, description, image)
+* Automatically fetches link preview metadata (title, description, image)
 * Displays cards in a social media style format
 * Supports alignment options (left, center, right, wide, full)
-* Works with any URL that has Open Graph tags
+* Works with any URL that has link preview metadata
 * Lightweight and fast
 
 **Perfect for:**
@@ -33,27 +33,27 @@ traditional embeds.
 * Rich link previews
 * Content curation
 
-Simply add the "Open Graph Card" block, paste a URL, and the plugin will
-automatically fetch and display the Open Graph data in a beautiful card format.
+Simply add the "Link Preview Cards" block, paste a URL, and the plugin will
+automatically fetch and display the link preview data in a beautiful card format.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/open-graph-card` directory, or install the plugin through the WordPress admin interface.
+1. Upload the plugin files to the `/wp-content/plugins/link-preview-cards` directory, or install the plugin through the WordPress admin interface.
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Use the "Open Graph Card" block in the Gutenberg editor
+3. Use the "Link Preview Cards" block in the Gutenberg editor
 
 == Frequently Asked Questions ==
 
-= What is Open Graph data? =
+= What is link preview data? =
 
-Open Graph is a protocol that allows web pages to become rich objects in social
-media. It includes metadata like title, description, and image that social
-platforms use to create rich previews.
+Link preview data includes metadata like title, description, and image that
+websites provide to create rich previews when shared on social media platforms.
 
 = Does this work with any URL? =
 
-The URL must have Open Graph meta tags for the plugin to display rich data. If
-no Open Graph data is available, the block will show basic link information.
+The URL must have [link preview metadata](https://ogp.me/) for the plugin to
+display rich data. If no link preview data is available, the block will show
+basic link information.
 
 = Is this compatible with my theme? =
 
@@ -66,15 +66,15 @@ include customization options.
 
 == Screenshots ==
 
-1. Open Graph Card block in the editor
-2. Example of a rendered Open Graph card
+1. Link Preview Cards block in the editor
+2. Example of a rendered link preview card
 3. Block settings and options
 
 == Changelog ==
 
 = 0.1 =
 * Initial release
-* Basic Open Graph card functionality
+* Basic link preview card functionality
 * Gutenberg block integration
 
 == Upgrade Notice ==

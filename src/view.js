@@ -21,7 +21,7 @@
  */
 
 /* eslint-disable no-console */
-// console.log("Hello World! (from wpogc-open-graph-card block)");
+// console.log("Hello World! (from wpogc-link-preview-cards
 /* eslint-enable no-console */
 
 import { render, createElement } from '@wordpress/element';
@@ -29,7 +29,7 @@ import OgCard from './OgCard';
 
 // Wait for DOMContentLoaded to ensure all blocks are present
 document.addEventListener('DOMContentLoaded', () => {
-    const blocks = document.querySelectorAll('.wp-block-open-graph-card-og-card');
+    const blocks = document.querySelectorAll('.wp-block-link-preview-cards-og-card');
     blocks.forEach((el) => {
         const url = el.getAttribute('data-url');
         const ogTitle = el.getAttribute('data-og-title');

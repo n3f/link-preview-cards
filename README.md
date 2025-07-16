@@ -1,6 +1,6 @@
-# Open Graph Card
+# Link Preview Cards
 
-A WordPress plugin that provides a Gutenberg block for displaying Open Graph cards from any URL.
+A WordPress plugin that provides a Gutenberg block for displaying link preview cards from any URL.
 
 ## Development
 
@@ -49,7 +49,7 @@ bun run reset
 ### Project Structure
 
 ```
-open-graph-card/
+link-preview-cards/
 ├── src/                    # Block source files
 │   ├── block.json          # Block configuration
 │   ├── edit.js             # Editor component
@@ -59,7 +59,7 @@ open-graph-card/
 ├── build/                  # Built files (generated)
 ├── tests/                  # PHP tests
 ├── specs/                  # Playwright tests
-└── open-graph-card.php # Main plugin file
+└── link-preview-cards.php  # Main plugin file
 ```
 
 ### Testing
@@ -80,8 +80,8 @@ The project includes multiple testing layers:
 - [ ] Configure color palette (block settings)
 - [ ] Add PHPUnit tests
 - [ ] Rate limiting API endpoint
-- [ ] Refresh button on block (to refresh the Open Graph data)
-- [ ] Add proper error handling if Open Graph data is not found
+- [ ] Refresh button on block (to refresh the link preview data)
+- [ ] Add proper error handling if link preview data is not found
 - [ ] Internationalization (i18n)
-- [ ] Caching Open Graph data (use transient API)
+- [ ] Caching link preview data (use transient API)
 

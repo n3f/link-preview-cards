@@ -8,7 +8,7 @@ const {
 	fillUrlAndWaitForPreview
 } = require('./helpers');
 
-test.describe('Open Graph Card Block', () => {
+test.describe('Link Preview Cards Block', () => {
 	let editorFrame;
 
 	test.beforeEach(async ({ page }) => {
@@ -22,13 +22,13 @@ test.describe('Open Graph Card Block', () => {
 		await waitForBlockLoaded(editorFrame);
 	});
 
-	test('should be able to add Open Graph Card block to a post', async ({ page }) => {
-		const block = editorFrame.locator('.wp-block-open-graph-card-og-card').first();
+	test('should be able to add Link Preview Cards block to a post', async ({ page }) => {
+		const block = editorFrame.locator('.wp-block-link-preview-cards-og-card').first();
 		await expect(block).toBeVisible({ timeout: 10000 });
 	});
 
 	test('should display URL input field when block is added', async ({ page }) => {
-		const urlInput = editorFrame.locator('.wp-block-open-graph-card-og-card input[type="text"]').first();
+		const urlInput = editorFrame.locator('.wp-block-link-preview-cards-og-card input[type="text"]').first();
 		await expect(urlInput).toBeVisible({ timeout: 10000 });
 	});
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Integration tests for Open Graph Card API with nonce
+ * Integration tests for Link Preview Cards API with nonce
  */
 
 // Mock WordPress functions for testing

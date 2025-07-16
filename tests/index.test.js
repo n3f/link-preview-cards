@@ -3,7 +3,7 @@
  * @jest-environment jsdom
  */
 
-describe('Open Graph Card Block', () => {
+describe('Link Preview Cards Block', () => {
 	test('should have basic structure', () => {
 		// Simple test to verify the test setup works
 		expect(true).toBe(true);
@@ -13,8 +13,8 @@ describe('Open Graph Card Block', () => {
 		// Test that we can import the block.json file
 		const metadata = require('../src/block.json');
 		expect(metadata).toBeDefined();
-		expect(metadata.name).toBe('open-graph-card/og-card');
-		expect(metadata.title).toBe('Open Graph Card');
+		expect(metadata.name).toBe('link-preview-cards/og-card');
+		expect(metadata.title).toBe('Link Preview Cards');
 	});
 
 	/**

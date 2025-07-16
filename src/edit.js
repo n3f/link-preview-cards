@@ -68,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...useBlockProps()}>
 			<TextControl
-				label={__("Paste a URL to preview", "open-graph-card")}
+				label={__("Paste a URL to preview", "link-preview-cards")}
 				value={url}
 				onChange={(url) => setAttributes({ url })}
 				placeholder="https://example.com"
