@@ -1,11 +1,11 @@
-export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
+export default function Card({ url, title, description, image }) {
     if (!url) return null;
     return (
         <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="og-card"
+            className="card"
             style={{
                 display: 'block',
                 border: '1px solid #ccc',
@@ -17,9 +17,9 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
             }}
         >
-            {ogImage && (
+            {image && (
                 <img
-                    src={ogImage}
+                    src={image}
                     alt=""
                     style={{
                         width: '100%',
@@ -32,15 +32,15 @@ export default function OgCard({ url, ogTitle, ogDescription, ogImage }) {
                 />
             )}
             <div style={{ padding: 16 }}>
-                <div className="og-card-title" style={{ fontWeight: 'bold', fontSize: '1.1em', marginBottom: 8 }}>
-                    {ogTitle || url}
+                <div className="card-title" style={{ fontWeight: 'bold', fontSize: '1.1em', marginBottom: 8 }}>
+                    {title || url}
                 </div>
-                {ogDescription && (
-                    <div className="og-card-description" style={{ color: '#555', marginBottom: 12 }}>
-                        {ogDescription}
+                {description && (
+                    <div className="card-description" style={{ color: '#555', marginBottom: 12 }}>
+                        {description}
                     </div>
                 )}
-                <div className="og-card-url" style={{ fontSize: '0.85em', color: '#888' }}>
+                <div className="card-url" style={{ fontSize: '0.85em', color: '#888' }}>
                     {url.replace(/^https?:\/\//, '').split('/')[0]}
                 </div>
             </div>

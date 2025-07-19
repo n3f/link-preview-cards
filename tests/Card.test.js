@@ -5,23 +5,23 @@
 
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import OgCard from '../src/OgCard';
+import Card from '../src/Card';
 
-describe('OgCard Component', () => {
+describe('Card Component', () => {
 	test('should render null when no URL is provided', () => {
-		const { container } = render(<OgCard />);
+		const { container } = render(<Card />);
 		expect(container.firstChild).toBeNull();
 	});
 
 	test('should render with URL only', () => {
 		const url = 'https://example.com';
-		render(<OgCard url={url} />);
+		render(<Card url={url} />);
 
 		const link = screen.getByRole('link');
 		expect(link).toHaveAttribute('href', url);
 		expect(link).toHaveAttribute('target', '_blank');
 		expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-		expect(link).toHaveClass('og-card');
+		expect(link).toHaveClass('card');
 	});
 
 	test('should render with title and description', () => {
@@ -29,7 +29,7 @@ describe('OgCard Component', () => {
 		const title = 'Test Title';
 		const description = 'Test Description';
 
-		render(<OgCard url={url} ogTitle={title} ogDescription={description} />);
+		render(<Card url={url} title={title} description={description} />);
 
 		expect(screen.getByText(title)).toBeInTheDocument();
 		expect(screen.getByText(description)).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('OgCard Component', () => {
 		const url = 'https://example.com';
 		const imageUrl = 'https://example.com/image.jpg';
 
-		render(<OgCard url={url} ogImage={imageUrl} />);
+		render(<Card url={url} image={imageUrl} />);
 		// screen.debug();
 
 		const image = screen.getByAltText('');
@@ -49,20 +49,20 @@ describe('OgCard Component', () => {
 
 	test('should display domain from URL', () => {
 		const url = 'https://example.com/page';
-		render(<OgCard url={url} />);
+		render(<Card url={url} />);
 
 		expect(screen.getByText('example.com')).toBeInTheDocument();
 	});
 
-	test('should fall back to URL as title when ogTitle is missing', () => {
+	test('should fall back to URL as title when title is missing', () => {
 		const url = 'https://example.com';
-		render(<OgCard url={url} />);
+		render(<Card url={url} />);
 		// The title div should display the URL
 		expect(screen.getByText(url)).toBeInTheDocument();
 	});
 
 	test('should handle malformed URLs gracefully', () => {
-		render(<OgCard url="not-a-url" />);
+		render(<Card url="not-a-url" />);
 		expect(screen.getByRole('link')).toHaveAttribute('href', 'not-a-url');
 		// Test that the component renders without crashing
 		expect(screen.getByRole('link')).toBeInTheDocument();
@@ -70,19 +70,19 @@ describe('OgCard Component', () => {
 
 	test('should handle very long titles', () => {
 		const longTitle = 'a'.repeat(200);
-		render(<OgCard url="https://example.com" ogTitle={longTitle} />);
+		render(<Card url="https://example.com" title={longTitle} />);
 		expect(screen.getByText(longTitle)).toBeInTheDocument();
 	});
 
 	test('should handle missing images gracefully', () => {
-		render(<OgCard url="https://example.com" ogImage="https://invalid-image.jpg" />);
+		render(<Card url="https://example.com" image="https://invalid-image.jpg" />);
 		// Should not crash when image fails to load
 		expect(screen.getByRole('link')).toBeInTheDocument();
 	});
 
 	test('should handle XSS in content', () => {
 		const maliciousTitle = '<script>alert("xss")</script>';
-		render(<OgCard url="https://example.com" ogTitle={maliciousTitle} />);
+		render(<Card url="https://example.com" title={maliciousTitle} />);
 		expect(screen.getByText(maliciousTitle)).toBeInTheDocument();
 		// Verify the script tag is not executed (rendered as text)
 		expect(screen.queryByText('xss')).not.toBeInTheDocument();
@@ -90,13 +90,13 @@ describe('OgCard Component', () => {
 
 	test('should handle very long URLs', () => {
 		const longUrl = 'https://example.com/' + 'a'.repeat(1000);
-		render(<OgCard url={longUrl} />);
+		render(<Card url={longUrl} />);
 		expect(screen.getByRole('link')).toHaveAttribute('href', longUrl);
 	});
 
 	test('should handle special characters in URLs', () => {
 		const urlWithSpecialChars = 'https://example.com/path?param=value&another=test#fragment';
-		render(<OgCard url={urlWithSpecialChars} />);
+		render(<Card url={urlWithSpecialChars} />);
 		expect(screen.getByRole('link')).toHaveAttribute('href', urlWithSpecialChars);
 	});
 });

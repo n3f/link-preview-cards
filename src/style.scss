@@ -11,17 +11,17 @@
 // 	padding: 2px;
 // }
 
-.og-card:hover {
+.card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 //   transform: translateY(-1px);
   transform: scale(1.005);
 //   transform: translateY(-1px) scale(1.01);
-  .og-card-title {
+  .card-title {
 	text-decoration: underline;
   }
 }
 
-// .og-card {
+// .card {
 // 	// > div {
 // 	// 	// this darkens the base color by 5%
 // 	// 	// background-color: lch( from var(--wp--preset--color--base) calc(l - 5) 0 0);
@@ -31,7 +31,7 @@
 
 .wp-block-link-preview-cards-og-card {
 	// Default width for normal alignment
-	// .og-card {
+	// .card {
 	// 	max-width: 500px;
 	// 	width: 100%;
 	// }
@@ -52,13 +52,13 @@
 	}
 
 	.alignwide {
-		.og-card {
+		.card {
 			max-width: var(--wp--style--global--wide-size, 1200px); // Uses WordPress wide size
 		}
 	}
 
 	.alignfull {
-		.og-card {
+		.card {
 			max-width: none; // Full width
 			width: 100%;
 		}

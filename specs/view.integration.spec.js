@@ -35,7 +35,7 @@ test.describe('Frontend Link Preview Cards Rendering', () => {
         await verifyFrontendBlock(page, 'https://example.com');
 
         // Additional check for title element if it exists
-        const titleElement = page.locator('.og-card-title');
+        const titleElement = page.locator('.card-title');
         if (await titleElement.count() > 0) {
             await expect(titleElement).toBeVisible({ timeout: 5000 });
         }

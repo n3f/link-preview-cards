@@ -26,7 +26,7 @@ jest.mock('../src/edit', () => {
 					placeholder="https://example.com"
 				/>
 				{url && (
-					<div data-testid="og-card-preview">
+					<div data-testid="card-preview">
 						<div data-testid="og-title">{ogTitle || url}</div>
 						{ogDescription && <div data-testid="og-description">{ogDescription}</div>}
 						{ogImage && <img data-testid="og-image" src={ogImage} alt="" />}
@@ -59,7 +59,7 @@ describe('Edit Component', () => {
 		jest.clearAllMocks();
 	});
 
-	test('should display preview of OgCard component', () => {
+	test('should display preview of Card component', () => {
 		const attributes = {
 			url: 'https://example.com',
 			ogTitle: 'Test Title',
@@ -103,7 +103,7 @@ describe('Save Component', () => {
 		expect(screen.getByTestId('save-wrapper')).toBeInTheDocument();
 	});
 
-	test('should render OgCard component in save function', () => {
+	test('should render Card component in save function', () => {
 		const attributes = {
 			url: 'https://example.com',
 			ogTitle: 'Test Title',

@@ -25,18 +25,21 @@
 /* eslint-enable no-console */
 
 import { render, createElement } from '@wordpress/element';
-import OgCard from './OgCard';
+import Card from './Card';
 
 // Wait for DOMContentLoaded to ensure all blocks are present
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('View script loaded, looking for blocks...');
     const blocks = document.querySelectorAll('.wp-block-link-preview-cards-card');
+    console.log('Found blocks:', blocks.length);
     blocks.forEach((el) => {
         const url = el.getAttribute('data-url');
         const ogTitle = el.getAttribute('data-og-title');
         const ogDescription = el.getAttribute('data-og-description');
         const ogImage = el.getAttribute('data-og-image');
+        console.log('Rendering card for URL:', url);
         render(
-            createElement(OgCard, { url, ogTitle, ogDescription, ogImage }),
+            createElement(Card, { url, title: ogTitle, description: ogDescription, image: ogImage }),
             el
         );
     });

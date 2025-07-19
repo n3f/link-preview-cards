@@ -102,10 +102,17 @@ export async function publishPostAndView(page) {
  */
 export async function verifyFrontendBlock(page, expectedUrl = 'https://example.com') {
     const block = page.locator('.wp-block-link-preview-cards-card');
-    console.log(block);
+    // Add this before the failing line to see what's actually on the page
+    const pageContent = await page.content();
+    console.log('Page HTML:', pageContent);
+    debugger;
     // await expect(block).toBeVisible({ timeout: 10000 });
     await expect(block).toHaveAttribute('data-url', expectedUrl, { timeout: 10000 });
 
-    const cardContent = page.locator('.og-card');
-    await expect(cardContent).toBeVisible({ timeout: 10000 });
+    // The Card component is rendered inside the block wrapper, so we look for the block wrapper
+    // which should be visible and contain the card content
+    await expect(block).toBeVisible({ timeout: 10000 });
+
+    // Wait for the Card component to be rendered inside the block
+    await page.waitForSelector('.wp-block-link-preview-cards-card .card', { timeout: 30000 });
 }

@@ -12,11 +12,11 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
-import { TextControl, Card, CardBody } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
 import { useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import apiFetch from '@wordpress/api-fetch';
-import OgCard from './OgCard';
+import Card from './Card';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -73,7 +73,7 @@ export default function Edit({ attributes, setAttributes }) {
 				onChange={(url) => setAttributes({ url })}
 				placeholder="https://example.com"
 			/>
-			{url && <OgCard url={url} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage} />}
+			{url && <Card url={url} title={ogTitle} description={ogDescription} image={ogImage} />}
 		</div>
 	);
 }
