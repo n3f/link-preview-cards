@@ -35,7 +35,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { url, ogTitle, ogDescription, ogImage } = attributes;
+	const { url, title, description, image } = attributes;
 
 	const debouncedFetch = useRef(
 		debounce(async (url, setAttributes) => {
@@ -44,15 +44,15 @@ export default function Edit({ attributes, setAttributes }) {
 					path: `/linkpreviewcards/v1/fetch?url=${encodeURIComponent(url)}&nonce=${linkpreviewcards.nonce}`,
 				});
 				setAttributes({
-					ogTitle: data.title || '',
-					ogDescription: data.description || '',
-					ogImage: data.image || ''
+					title: data.title || '',
+					description: data.description || '',
+					image: data.image || ''
 				});
 			} catch (e) {
 				setAttributes({
-					ogTitle: '',
-					ogDescription: '',
-					ogImage: ''
+					title: '',
+					description: '',
+					image: ''
 				});
 			}
 		}, 600)
@@ -73,7 +73,7 @@ export default function Edit({ attributes, setAttributes }) {
 				onChange={(url) => setAttributes({ url })}
 				placeholder="https://example.com"
 			/>
-			{url && <Card url={url} title={ogTitle} description={ogDescription} image={ogImage} />}
+			{url && <Card url={url} title={title} description={description} image={image} />}
 		</div>
 	);
 }

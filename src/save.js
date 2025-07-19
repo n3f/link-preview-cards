@@ -21,9 +21,9 @@ export default function save({ attributes }) {
 		<div
 			{...useBlockProps.save()}
 			data-url={attributes.url}
-			data-og-title={attributes.ogTitle}
-			data-og-description={attributes.ogDescription}
-			data-og-image={attributes.ogImage}
+			data-title={attributes.title}
+			data-description={attributes.description}
+			data-image={attributes.image}
 		/>
 	);
 }

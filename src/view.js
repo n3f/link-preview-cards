@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Found blocks:', blocks.length);
     blocks.forEach((el) => {
         const url = el.getAttribute('data-url');
-        const ogTitle = el.getAttribute('data-og-title');
-        const ogDescription = el.getAttribute('data-og-description');
-        const ogImage = el.getAttribute('data-og-image');
+        const title = el.getAttribute('data-title');
+        const description = el.getAttribute('data-description');
+        const image = el.getAttribute('data-image');
         console.log('Rendering card for URL:', url);
         render(
-            createElement(Card, { url, title: ogTitle, description: ogDescription, image: ogImage }),
+            createElement(Card, { url, title, description, image }),
             el
         );
     });

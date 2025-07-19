@@ -23,15 +23,15 @@
       "type": "string",
       "default": ""
     },
-    "ogTitle": {
+    "title": {
       "type": "string",
       "default": ""
     },
-    "ogDescription": {
+    "description": {
       "type": "string",
       "default": ""
     },
-    "ogImage": {
+    "image": {
       "type": "string",
       "default": ""
     }

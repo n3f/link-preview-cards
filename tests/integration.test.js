@@ -3,6 +3,7 @@
  * @jest-environment jsdom
  */
 
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -16,7 +17,7 @@ jest.mock('react', () => ({
 // Mock the Edit component to avoid WordPress dependencies
 jest.mock('../src/edit', () => {
 	return function MockEdit({ attributes, setAttributes }) {
-		const { url, ogTitle, ogDescription, ogImage } = attributes;
+		const { url, title, description, image } = attributes;
 		return (
 			<div data-testid="edit-component">
 				<input
@@ -27,9 +28,9 @@ jest.mock('../src/edit', () => {
 				/>
 				{url && (
 					<div data-testid="card-preview">
-						<div data-testid="og-title">{ogTitle || url}</div>
-						{ogDescription && <div data-testid="og-description">{ogDescription}</div>}
-						{ogImage && <img data-testid="og-image" src={ogImage} alt="" />}
+						<div data-testid="title">{title || url}</div>
+						{description && <div data-testid="description">{description}</div>}
+						{image && <img data-testid="image" src={image} alt="" />}
 					</div>
 				)}
 			</div>
@@ -44,9 +45,9 @@ jest.mock('../src/save', () => {
 			<div
 				data-testid="save-component"
 				data-url={attributes.url}
-				data-og-title={attributes.ogTitle}
-				data-og-description={attributes.ogDescription}
-				data-og-image={attributes.ogImage}
+				data-title={attributes.title}
+				data-description={attributes.description}
+				data-image={attributes.image}
 			/>
 		);
 	};
@@ -62,9 +63,9 @@ describe('Edit Component', () => {
 	test('should display preview of Card component', () => {
 		const attributes = {
 			url: 'https://example.com',
-			ogTitle: 'Test Title',
-			ogDescription: 'Test Description',
-			ogImage: 'https://example.com/image.jpg'
+			title: 'Test Title',
+			description: 'Test Description',
+			image: 'https://example.com/image.jpg'
 		};
 
 		render(<div data-testid="edit-wrapper" />);
@@ -76,9 +77,9 @@ describe('Edit Component', () => {
 	test('should handle empty URL gracefully', () => {
 		const attributes = {
 			url: '',
-			ogTitle: '',
-			ogDescription: '',
-			ogImage: ''
+			title: '',
+			description: '',
+			image: ''
 		};
 
 		render(<div data-testid="edit-wrapper" />);
@@ -92,9 +93,9 @@ describe('Save Component', () => {
 	test('should save block with correct attributes', () => {
 		const attributes = {
 			url: 'https://example.com',
-			ogTitle: 'Test Title',
-			ogDescription: 'Test Description',
-			ogImage: 'https://example.com/image.jpg'
+			title: 'Test Title',
+			description: 'Test Description',
+			image: 'https://example.com/image.jpg'
 		};
 
 		render(<div data-testid="save-wrapper" />);
@@ -106,9 +107,9 @@ describe('Save Component', () => {
 	test('should render Card component in save function', () => {
 		const attributes = {
 			url: 'https://example.com',
-			ogTitle: 'Test Title',
-			ogDescription: 'Test Description',
-			ogImage: 'https://example.com/image.jpg'
+			title: 'Test Title',
+			description: 'Test Description',
+			image: 'https://example.com/image.jpg'
 		};
 
 		render(<div data-testid="save-wrapper" />);
