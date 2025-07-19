@@ -167,9 +167,16 @@ class LinkPreviewCards {
      * Enqueue editor assets and localize data
      */
     public function enqueue_editor_assets() {
-        wp_localize_script('link-preview-cards-script', 'linkpreviewcards', [
-            'nonce' => wp_create_nonce(LINKPREVIEWCARDS_NONCE),
-        ]);
+        // Get all registered blocks and find our block's editor script
+        $block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
+        foreach ($block_types as $block_name => $block_type) {
+            if ($block_name === 'link-preview-cards/card' && $block_type->editor_script) {
+                wp_localize_script($block_type->editor_script, 'linkpreviewcards', [
+                    'nonce' => wp_create_nonce(LINKPREVIEWCARDS_NONCE),
+                ]);
+                break;
+            }
+        }
     }
 }
 

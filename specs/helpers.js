@@ -37,8 +37,9 @@ export async function addOpenGraphCardBlock(page) {
     await page.keyboard.press('/');
     await page.keyboard.press('l');
 
-    await page.waitForSelector('button[id="components-autocomplete-item-0-block-link-preview-cards-card"]');
-    await page.click('button[id="components-autocomplete-item-0-block-link-preview-cards-card"]');
+    // Wait for the block to appear in the autocomplete
+    await page.waitForSelector('button[id*="link-preview-cards"]', { timeout: 10000 });
+    await page.click('button[id*="link-preview-cards"]');
 }
 
 /**
@@ -58,7 +59,8 @@ export function getEditorFrame(page) {
  * @param {import('@playwright/test').Frame} editorFrame
  */
 export async function waitForBlockLoaded(editorFrame) {
-    await editorFrame.waitForSelector('.wp-block-link-preview-cards-card', { timeout: 10000 });
+    // Try multiple possible selectors for the block
+    await editorFrame.waitForSelector('[class*="wp-block-link-preview-cards"], [class*="link-preview-cards"]', { timeout: 10000 });
 }
 
 /**
@@ -67,9 +69,9 @@ export async function waitForBlockLoaded(editorFrame) {
  * @param {string} url
  */
 export async function fillUrlAndWaitForPreview(editorFrame, url = 'https://example.com') {
-    const urlInput = editorFrame.locator('.wp-block-link-preview-cards-card input[type="text"]').first();
+    const urlInput = editorFrame.locator('[class*="wp-block-link-preview-cards"] input[type="text"], [class*="link-preview-cards"] input[type="text"]').first();
     await urlInput.fill(url);
-    await editorFrame.waitForSelector('.wp-block-link-preview-cards-card, [class*="card"]', { timeout: 10000 });
+    await editorFrame.waitForSelector('[class*="wp-block-link-preview-cards"], [class*="card"]', { timeout: 10000 });
 }
 
 /**

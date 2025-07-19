@@ -1,12 +1,12 @@
-const { test, expect } = require('@playwright/test');
-const {
+import { test, expect } from '@playwright/test';
+import {
 	loginToWordPress,
 	navigateToNewPost,
 	addOpenGraphCardBlock,
 	getEditorFrame,
 	waitForBlockLoaded,
 	fillUrlAndWaitForPreview
-} = require('./helpers');
+} from './helpers';
 
 test.describe('Link Preview Cards Block', () => {
 	let editorFrame;
@@ -23,19 +23,19 @@ test.describe('Link Preview Cards Block', () => {
 	});
 
 	test('should be able to add Link Preview Cards block to a post', async ({ page }) => {
-		const block = editorFrame.locator('.wp-block-link-preview-cards-card').first();
+		const block = editorFrame.locator('[class*="wp-block-link-preview-cards"], [class*="link-preview-cards"]').first();
 		await expect(block).toBeVisible({ timeout: 10000 });
 	});
 
 	test('should display URL input field when block is added', async ({ page }) => {
-		const urlInput = editorFrame.locator('.wp-block-link-preview-cards-card input[type="text"]').first();
+		const urlInput = editorFrame.locator('[class*="wp-block-link-preview-cards"] input[type="text"], [class*="link-preview-cards"] input[type="text"]').first();
 		await expect(urlInput).toBeVisible({ timeout: 10000 });
 	});
 
 	test('should show preview when URL is entered', async ({ page }) => {
 		await fillUrlAndWaitForPreview(editorFrame, 'https://example.com');
 
-		const preview = editorFrame.locator('.wp-block-link-preview-cards-card, [class*="card"]').first();
+		const preview = editorFrame.locator('[class*="wp-block-link-preview-cards"], [class*="card"]').first();
 		await expect(preview).toBeVisible({ timeout: 10000 });
 	});
 });
