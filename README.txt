@@ -1,5 +1,5 @@
 === Link Preview Cards ===
-Contributors: n3f
+Contributors: neffff
 Tags: open-graph, embed, block, gutenberg, social-media
 Requires at least: 5.0
 Tested up to: 6.8
