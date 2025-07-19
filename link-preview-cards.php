@@ -37,12 +37,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('LPC_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LINKPREVIEWCARDS_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LINKPREVIEWCARDS_NONCE', 'linkpreviewcards_nonce');
 
 /**
  * Main plugin class
  */
-class Link_Preview_Cards {
+class LinkPreviewCards {
 
     /**
      * Constructor
@@ -57,7 +58,7 @@ class Link_Preview_Cards {
      */
     public function init() {
         // Register block
-        register_block_type(LPC_PLUGIN_DIR . 'build/block.json');
+        register_block_type(LINKPREVIEWCARDS_PLUGIN_DIR . 'build/block.json');
 
         // Enqueue scripts and localize data
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_editor_assets']);
@@ -67,7 +68,7 @@ class Link_Preview_Cards {
      * Register REST API routes
      */
     public function register_rest_routes() {
-        register_rest_route('ogc/v1', '/og', [
+        register_rest_route('linkpreviewcards/v1', '/fetch', [
             'methods' => 'GET',
             'callback' => [$this, 'fetch_link_preview_data'],
             'args' => [
@@ -104,7 +105,7 @@ class Link_Preview_Cards {
      * Validate nonce parameter
      */
     public function validate_nonce($param) {
-        return wp_verify_nonce($param, 'ogc_og_nonce');
+        return wp_verify_nonce($param, LINKPREVIEWCARDS_NONCE);
     }
 
     /**
@@ -166,14 +167,14 @@ class Link_Preview_Cards {
      * Enqueue editor assets and localize data
      */
     public function enqueue_editor_assets() {
-        wp_localize_script('link-preview-cards-og-card-editor-script', 'ogc', [
-            'nonce' => wp_create_nonce('ogc_og_nonce'),
+        wp_localize_script('link-preview-cards-script', 'linkpreviewcards', [
+            'nonce' => wp_create_nonce(LINKPREVIEWCARDS_NONCE),
         ]);
     }
 }
 
 // Initialize the plugin
-new Link_Preview_Cards();
+new LinkPreviewCards();
 
 // Activation hook
 register_activation_hook(__FILE__, function() {

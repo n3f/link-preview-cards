@@ -21,23 +21,23 @@ describe('Link Preview Cards Block', () => {
 	 * Test that the editor block properly sends nonce with API requests
 	 */
 	test('editor block API call includes nonce parameter', () => {
-		// Mock the global wpogc object that should be localized by PHP
-		global.wpogc = {
+		// Mock the global linkpreviewcards object that should be localized by PHP
+		global.linkpreviewcards = {
 			nonce: 'test_nonce_123',
-			restUrl: '/wp-json/wpogc/v1/og'
+			restUrl: '/wp-json/linkpreviewcards/v1/fetch'
 		};
 
-		// The issue is that edit.js should use the nonce from wpogc.nonce
+		// The issue is that edit.js should use the nonce from linkpreviewcards.nonce
 		// but currently it's not doing that - it's just calling:
-		// path: `/wpogc/v1/og?url=${encodeURIComponent(url)}`
+		// path: `/linkpreviewcards/v1/fetch?url=${encodeURIComponent(url)}`
 		// instead of:
-		// path: `/wpogc/v1/og?url=${encodeURIComponent(url)}&nonce=${wpogc.nonce}`
+		// path: `/linkpreviewcards/v1/fetch?url=${encodeURIComponent(url)}&nonce=${linkpreviewcards.nonce}`
 
 		// This test verifies that the nonce should be included
-		const expectedPath = `/wpogc/v1/og?url=${encodeURIComponent('https://example.com')}&nonce=test_nonce_123`;
+		const expectedPath = `/linkpreviewcards/v1/fetch?url=${encodeURIComponent('https://example.com')}&nonce=test_nonce_123`;
 
 		// The current implementation would be:
-		const currentPath = `/wpogc/v1/og?url=${encodeURIComponent('https://example.com')}`;
+		const currentPath = `/linkpreviewcards/v1/fetch?url=${encodeURIComponent('https://example.com')}`;
 
 		// These should be different - the current implementation is missing the nonce
 		expect(currentPath).not.toBe(expectedPath);
@@ -50,14 +50,14 @@ describe('Link Preview Cards Block', () => {
 	 * Test that the fix properly includes nonce in API calls
 	 */
 	test('fixed editor block API call includes nonce parameter', () => {
-		// Mock the global wpogc object that should be localized by PHP
-		global.wpogc = {
+		// Mock the global linkpreviewcards object that should be localized by PHP
+		global.linkpreviewcards = {
 			nonce: 'test_nonce_123',
-			restUrl: '/wp-json/wpogc/v1/og'
+			restUrl: '/wp-json/linkpreviewcards/v1/fetch'
 		};
 
 		// After the fix, the API call should include the nonce
-		const fixedPath = `/wpogc/v1/og?url=${encodeURIComponent('https://example.com')}&nonce=test_nonce_123`;
+		const fixedPath = `/linkpreviewcards/v1/fetch?url=${encodeURIComponent('https://example.com')}&nonce=test_nonce_123`;
 
 		// Verify the fixed implementation includes the nonce
 		expect(fixedPath).toContain('nonce=');

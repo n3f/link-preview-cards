@@ -41,7 +41,7 @@ export default function Edit({ attributes, setAttributes }) {
 		debounce(async (url, setAttributes) => {
 			try {
 				const data = await apiFetch({
-					path: `/ogc/v1/og?url=${encodeURIComponent(url)}&nonce=${ogc.nonce}`,
+					path: `/linkpreviewcards/v1/fetch?url=${encodeURIComponent(url)}&nonce=${linkpreviewcards.nonce}`,
 				});
 				setAttributes({
 					ogTitle: data.title || '',

@@ -8,7 +8,7 @@
     "destroy": "wp-env destroy",
     "reset": "wp-env reset",
     "test:unit": "wp-scripts test-unit-js",
-    "test:php": "wp-env run tests-cli php /var/www/html/wp-content/plugins/link-preview-cards/tests/test-api.php",
+    "test:php": "wp-env run tests-cli bash -c \"php wp-content/plugins/link-preview-cards/tests/unit-test.php && php wp-content/plugins/link-preview-cards/tests/api-integration.test.php\"",
     "test:php-local": "php tests/test-api.php",
     "test:playwright": "playwright test",
     "shell": "wp-env run cli wp shell",
