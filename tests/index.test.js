@@ -13,7 +13,7 @@ describe('Link Preview Cards Block', () => {
 		// Test that we can import the block.json file
 		const metadata = require('../src/block.json');
 		expect(metadata).toBeDefined();
-		expect(metadata.name).toBe('link-preview-cards/og-card');
+		expect(metadata.name).toBe('link-preview-cards/card');
 		expect(metadata.title).toBe('Link Preview Cards');
 	});
 
