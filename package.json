@@ -27,8 +27,6 @@
   "files": [
     "src",
     "build",
-    "tests",
-    "specs",
     "link-preview-cards.php",
     "LICENSE.txt",
     "README.md",

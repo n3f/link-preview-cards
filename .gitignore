@@ -11,3 +11,9 @@ build/
 
 # Lock files (keeping package-lock.json, removing bun.lock)
 package-lock.json
+
+# Build files
+link-preview-cards.zip
+
+# workspace
+link-preview-cards.code-workspace
