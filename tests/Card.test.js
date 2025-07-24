@@ -22,7 +22,7 @@ describe('Card Component', () => {
 		expect(link).toHaveAttribute('href', url);
 		expect(link).toHaveAttribute('target', '_blank');
 		expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-		expect(link).toHaveClass('card');
+		expect(link).toHaveClass('link-preview-card');
 	});
 
 	test('should render with title and description', () => {

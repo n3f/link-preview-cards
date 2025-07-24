@@ -111,5 +111,5 @@ export async function verifyFrontendBlock(page, expectedUrl = 'https://example.c
     await expect(block).toBeVisible({ timeout: 10000 });
 
     // Wait for the Card component to be rendered inside the block
-    await page.waitForSelector('.wp-block-link-preview-cards-card .card', { timeout: 30000 });
+    await page.waitForSelector('.wp-block-link-preview-cards-card .link-preview-card', { timeout: 30000 });
 }
