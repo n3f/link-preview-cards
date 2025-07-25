@@ -68,7 +68,6 @@ include customization options.
 
 1. Link Preview Cards block in the editor
 2. Example of a rendered link preview card
-3. Block settings and options
 
 == Changelog ==
 
