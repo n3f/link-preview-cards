@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1544"
+   height="500"
+   viewBox="0 0 1544 500"
+   version="1.1"
+   id="svg33"
+   sodipodi:docname="banner.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   inkscape:export-filename="banner-772x250.jpg"
+   inkscape:export-xdpi="48"
+   inkscape:export-ydpi="48"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview33"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.92285142"
+     inkscape:cx="750.39165"
+     inkscape:cy="188.54606"
+     inkscape:window-width="2472"
+     inkscape:window-height="1427"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg33" />
+  <defs
+     id="defs4">
+    <!-- Background gradient -->
+    <linearGradient
+       id="bg-gradient"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#1cc7c1"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#3a7bd5"
+         id="stop2" />
+    </linearGradient>
+    <!-- Image gradient placeholder -->
+    <linearGradient
+       id="image-gradient"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#d9eaf7"
+         id="stop3" />
+      <stop
+         offset="100%"
+         stop-color="#b0d4ec"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient33"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient34"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient37"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient38"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient39"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#image-gradient"
+       id="linearGradient43"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.3165612,0.75955453)"
+       x1="9.1146543"
+       y1="15.798734"
+       x2="127.60516"
+       y2="134.28924" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter47"
+       x="-0.34947701"
+       y="-0.34947701"
+       width="1.698954"
+       height="1.698954">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="26.210775"
+         id="feGaussianBlur47" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter48"
+       x="-0.1167982"
+       y="-0.1167982"
+       width="1.2335964"
+       height="1.2335964">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="8.7598648"
+         id="feGaussianBlur48" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter49"
+       x="-0.11252647"
+       y="-0.11252647"
+       width="1.2250529"
+       height="1.2250529">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="8.4394852"
+         id="feGaussianBlur49" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter50"
+       x="-0.11252647"
+       y="-0.11252647"
+       width="1.2250529"
+       height="1.2250529">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="8.4394852"
+         id="feGaussianBlur50" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter51"
+       x="-0.1167982"
+       y="-0.1167982"
+       width="1.2335964"
+       height="1.2335964">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="8.7598648"
+         id="feGaussianBlur51" />
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect
+     width="1544"
+     height="500"
+     fill="url(#bg-gradient)"
+     id="rect4" />
+  <!-- Sparkles -->
+  <circle
+     cx="1350"
+     cy="120"
+     r="6"
+     fill="white"
+     opacity="0.12"
+     id="circle5" />
+  <!-- Stacked cards -->
+  <circle
+     cx="379.57559"
+     cy="79"
+     r="4"
+     fill="#ffffff"
+     opacity="0.15"
+     id="circle4" />
+  <circle
+     cx="1032.8055"
+     cy="69"
+     r="3"
+     fill="#ffffff"
+     opacity="0.2"
+     id="circle6" />
+  <circle
+     cx="1179.5756"
+     cy="429"
+     r="5"
+     fill="#ffffff"
+     opacity="0.1"
+     id="circle7" />
+  <circle
+     cx="1016.6544"
+     cy="219"
+     r="2"
+     fill="#ffffff"
+     opacity="0.18"
+     id="circle8" />
+  <circle
+     cx="365.92441"
+     cy="299"
+     r="3.5"
+     fill="#ffffff"
+     opacity="0.12"
+     id="circle9" />
+  <g
+     transform="rotate(-6,1117.8615,-3258.1245)"
+     id="g13">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect9"
+       style="fill:#000000;fill-opacity:0.71220398;filter:url(#filter48)" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect10"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect11"
+       style="fill:url(#linearGradient34)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect12" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect13" />
+  </g>
+  <g
+     transform="rotate(-3,2534.8969,-9971.9789)"
+     id="g18">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect14"
+       style="fill:#000000;fill-opacity:0.71220398;filter:url(#filter49)" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect15"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect16"
+       style="fill:url(#linearGradient37)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect17" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect18" />
+  </g>
+  <g
+     transform="translate(696.77866,139)"
+     id="g23">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect19" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect20"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect21"
+       style="fill:url(#linearGradient38)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect22" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect23" />
+  </g>
+  <g
+     transform="rotate(3,-2601.866,16657.742)"
+     id="g28">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect24"
+       style="fill:#000000;fill-opacity:0.71220398;filter:url(#filter50)" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect25"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect26"
+       style="fill:url(#linearGradient39)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect27" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect28" />
+  </g>
+  <g
+     transform="rotate(6,-1200.3939,9770.6542)"
+     id="g33">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect29"
+       style="fill:#000000;fill-opacity:0.71220398;filter:url(#filter51)" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect30"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect31"
+       style="fill:url(#linearGradient33)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect32" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect33" />
+  </g>
+  <g
+     transform="matrix(1.6121408,0.03250698,-0.03250698,1.6121408,643.45235,79.692407)"
+     id="g43">
+    <rect
+       x="4"
+       y="4"
+       width="180"
+       height="180"
+       rx="16"
+       fill="rgba(0,0,0,0.1)"
+       id="rect39"
+       style="stroke:none;stroke-opacity:1;fill:#000000;fill-opacity:0.50273222;filter:url(#filter47)" />
+    <rect
+       width="180"
+       height="180"
+       rx="16"
+       fill="#ffffff"
+       id="rect40"
+       x="0"
+       y="0" />
+    <rect
+       x="12"
+       y="12"
+       width="156"
+       height="90"
+       rx="10"
+       fill="url(#image-gradient)"
+       id="rect41"
+       style="fill:url(#linearGradient43)" />
+    <rect
+       x="16"
+       y="112"
+       width="148"
+       height="16"
+       rx="4"
+       fill="#eeeeee"
+       id="rect42" />
+    <rect
+       x="16"
+       y="138"
+       width="120"
+       height="12"
+       rx="3"
+       fill="#f2f2f2"
+       id="rect43" />
+  </g>
+  <circle
+     cx="1365.1704"
+     cy="318.29843"
+     r="16.835981"
+     fill="#ffffff"
+     opacity="0.12"
+     id="circle44"
+     style="stroke-width:2.806" />
+  <circle
+     cx="116.86546"
+     cy="339.9704"
+     r="6.000001"
+     fill="#ffffff"
+     opacity="0.12"
+     id="circle45"
+     style="stroke-width:1" />
+  <circle
+     cx="99.527893"
+     cy="82.074059"
+     r="16.835981"
+     fill="#ffffff"
+     opacity="0.12"
+     id="circle46"
+     style="stroke-width:2.806" />
+  <circle
+     cx="521.04749"
+     cy="454.83179"
+     r="6"
+     fill="#ffffff"
+     opacity="0.12"
+     id="circle47" />
+</svg>
