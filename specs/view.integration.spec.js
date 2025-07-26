@@ -5,7 +5,6 @@
 
 import { test, expect } from '@playwright/test';
 import {
-    loginToWordPress,
     navigateToNewPost,
     addOpenGraphCardBlock,
     getEditorFrame,
@@ -19,7 +18,6 @@ test.describe('Frontend Link Preview Cards Rendering', () => {
     let editorFrame;
 
     test.beforeEach(async ({ page }) => {
-        await loginToWordPress(page);
         await navigateToNewPost(page);
         await addOpenGraphCardBlock(page);
 

@@ -2,6 +2,22 @@
   "login": true,
   "steps": [
     {
+      "step": "defineSiteUrl",
+      "siteUrl": "http://localhost:8888"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "wp_editor_welcome_guide": "0",
+        "wp_editor_welcome_guide_show": "0",
+        "wp_editor_welcome_guide_dismissed": "1"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php include '/wordpress/wp-load.php'; file_put_contents(WPMU_PLUGIN_DIR . '/disable-welcome-guide.php', '<?php add_action(\"admin_head\", function() { echo \"<script>window.addEventListener(\\\"load\\\", function() { if (wp.data && wp.data.select(\\\"core/edit-post\\\").isFeatureActive(\\\"welcomeGuide\\\")) { wp.data.dispatch(\\\"core/edit-post\\\").toggleFeature(\\\"welcomeGuide\\\"); } });</script>\"; }); ?>'); ?>"
+    },
+    {
       "step": "runPHP",
       "code": "<?php include '/wordpress/wp-load.php'; wp_insert_post(array( 'post_title' => 'Link Preview Cards', 'post_content' => '<!-- wp:heading --><h2 class=\"wp-block-heading\">Have you seen this?</h2><!-- /wp:heading --><!-- wp:paragraph --><p>You can blog with this software...</p><!-- /wp:paragraph --><!-- wp:link-preview-cards/card {\"url\":\"https://wordpress.org\",\"title\":\"Blog Tool, Publishing Platform, and CMS - WordPress.org\",\"description\":\"Open source software which you can use to easily create a beautiful website, blog, or app.\",\"image\":\"https://wordpress.org/files/2024/04/wordpress-homepage-ogimage-202404.png\"} --><div class=\"wp-block-link-preview-cards-card\" data-url=\"https://wordpress.org\" data-title=\"Blog Tool, Publishing Platform, and CMS - WordPress.org\" data-description=\"Open source software which you can use to easily create a beautiful website, blog, or app.\" data-image=\"https://wordpress.org/files/2024/04/wordpress-homepage-ogimage-202404.png\"></div><!-- /wp:link-preview-cards/card -->', 'post_status' => 'publish', 'post_author' => 1 )); "
     }

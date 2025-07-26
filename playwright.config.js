@@ -1,10 +1,10 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './specs',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -19,7 +19,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:8889',
+    baseURL: 'http://localhost:8888',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -34,6 +34,8 @@ module.exports = defineConfig({
     navigationTimeout: 30000,
     actionTimeout: 15000,
   },
+
+
 
   /* Configure projects for major browsers */
   projects: [
@@ -75,8 +77,8 @@ module.exports = defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'bun run start',
-    url: 'http://localhost:8889',
+    command: 'bun run dev:playground',
+    url: 'http://localhost:8888',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
