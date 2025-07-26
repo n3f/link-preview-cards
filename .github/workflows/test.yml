@@ -3,8 +3,6 @@ name: Test
 on:
   pull_request:
     branches: [ trunk, main, master ]
-  push:
-    branches-ignore: [ trunk, main, master ]
 
 jobs:
   test:
@@ -25,8 +23,8 @@ jobs:
     - name: Run unit tests
       run: bun run test:unit
 
-    - name: Run PHP tests
-      run: bun run test:php
+    - name: Run PHP unit tests
+      run: php tests/unit-test.php
 
     - name: Run Playwright tests
       run: bunx playwright test --workers=1
