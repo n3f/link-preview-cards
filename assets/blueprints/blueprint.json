@@ -1,0 +1,13 @@
+{
+  "landingPage": "/wp-admin/post.php?post=4&action=edit",
+  "plugins": [
+    "link-preview-cards"
+  ],
+  "login": true,
+  "steps": [
+    {
+      "step": "runPHP",
+      "code": "<?php include '/wordpress/wp-load.php'; wp_insert_post(array( 'post_title' => 'Link Preview Cards', 'post_content' => '<!-- wp:heading --><h2 class=\"wp-block-heading\">Have you seen this?</h2><!-- /wp:heading --><!-- wp:paragraph --><p>You can blog with this software...</p><!-- /wp:paragraph --><!-- wp:link-preview-cards/card {\"url\":\"https://wordpress.org\",\"title\":\"Blog Tool, Publishing Platform, and CMS - WordPress.org\",\"description\":\"Open source software which you can use to easily create a beautiful website, blog, or app.\",\"image\":\"https://wordpress.org/files/2024/04/wordpress-homepage-ogimage-202404.png\"} --><div class=\"wp-block-link-preview-cards-card\" data-url=\"https://wordpress.org\" data-title=\"Blog Tool, Publishing Platform, and CMS - WordPress.org\" data-description=\"Open source software which you can use to easily create a beautiful website, blog, or app.\" data-image=\"https://wordpress.org/files/2024/04/wordpress-homepage-ogimage-202404.png\"></div><!-- /wp:link-preview-cards/card -->', 'post_status' => 'publish', 'post_author' => 1 )); "
+    }
+  ]
+}

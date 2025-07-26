@@ -1,6 +1,7 @@
 {
   "name": "link-preview-cards",
   "version": "0.1.1",
+  "type": "module",
   "description": "WordPress plugin that replaces embeds with link preview cards",
   "scripts": {
     "start": "wp-env start",
@@ -12,7 +13,8 @@
     "test:playwright": "playwright test",
     "shell": "wp-env run cli wp shell",
     "build": "wp-scripts build",
-    "block-start": "wp-scripts start"
+    "block-start": "wp-scripts start",
+    "dev:playground": "node dev-server.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
@@ -21,7 +23,8 @@
     "@wordpress/block-editor": "^14.21.0",
     "@wordpress/components": "^29.12.0",
     "@wordpress/env": "^10.26.0",
-    "@wordpress/scripts": "^30.19.0"
+    "@wordpress/scripts": "^30.19.0",
+    "@wp-playground/cli": "^2.0.4"
   },
   "files": [
     "src",
