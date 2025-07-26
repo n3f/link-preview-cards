@@ -3,7 +3,7 @@
  * Plugin Name: Link Preview Cards
  * Plugin URI: https://github.com/n3f/link-preview-cards
  * Description: Gutenberg block for displaying link preview cards.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Requires at least: 5.0
  * Tested up to: 6.8
  * Requires PHP: 8.2

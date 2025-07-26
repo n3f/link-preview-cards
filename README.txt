@@ -4,7 +4,7 @@ Tags: open-graph, embed, block, gutenberg, social-media
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://github.com/n3f/link-preview-cards
@@ -71,12 +71,18 @@ include customization options.
 
 == Changelog ==
 
+= 0.1.2 =
+* Changed class and CSS structure for cards to avoid conflicts with "card".
+
 = 0.1 =
 * Initial release
 * Basic link preview card functionality
 * Gutenberg block integration
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+Fix for 'card' class names.
 
 = 0.1.0 =
 Initial version
