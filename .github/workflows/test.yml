@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [ trunk, main, master ]
+  push:
+    branches-ignore: [ trunk, main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    - name: Install dependencies
+      run: bun install
+
+    - name: Run unit tests
+      run: bun run test:unit
+
+    - name: Run PHP tests
+      run: bun run test:php
+
+    - name: Run Playwright tests
+      run: bunx playwright test --workers=1
+
+    - name: Build plugin
+      run: bun run build
