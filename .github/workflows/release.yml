@@ -24,14 +24,17 @@ jobs:
     - name: Run unit tests
       run: bun run test:unit
 
-    - name: Run PHP tests
-      run: bun run test:php
-
-    - name: Run Playwright tests
-      run: bunx playwright test --workers=1
+    - name: Run PHP unit tests
+      run: php tests/unit-test.php
 
     - name: Build plugin
       run: bun run build
+
+    - name: Install Playwright with dependencies
+      run: bunx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: bunx playwright test --workers=1
 
     - name: Create plugin zip
       run: |

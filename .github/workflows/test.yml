@@ -34,3 +34,6 @@ jobs:
 
     - name: Run Playwright tests
       run: bunx playwright test --workers=1
+
+    - name: View files # allow inspection of generated files
+      run: ls -la
