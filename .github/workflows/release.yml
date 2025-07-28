@@ -58,6 +58,8 @@ jobs:
     #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     permissions:
       contents: write
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
 
     steps:
     - name: Checkout code
@@ -112,6 +114,8 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    env:
+      VERSION: ${{ needs.release.outputs.version }}
 
     steps:
     - name: Checkout code
@@ -130,7 +134,7 @@ jobs:
     - name: Extract plugin zip for WordPress deployment
       run: |
         mkdir -p plugin-files
-        unzip link-preview-cards-${{ steps.get_version.outputs.VERSION }}.zip -d temp-extract/
+        unzip link-preview-cards-${{ needs.release.outputs.version }}.zip -d temp-extract/
         mv temp-extract/link-preview-cards/* plugin-files/
         rmdir temp-extract/link-preview-cards
         rmdir temp-extract
@@ -140,6 +144,7 @@ jobs:
       env:
         SVN_USERNAME: ${{ secrets.WP_ORG_USERNAME }}
         SVN_PASSWORD: ${{ secrets.WP_ORG_PASSWORD }}
+        VERSION: ${{ needs.release.outputs.version }}
         ASSETS_DIR: false
         BUILD_DIR: plugin-files
         dry-run: true
