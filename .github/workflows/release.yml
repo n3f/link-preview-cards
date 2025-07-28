@@ -137,12 +137,11 @@ jobs:
 
     - name: Deploy to WordPress Plugin Directory
       uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_USERNAME: ${{ secrets.WP_ORG_USERNAME }}
+        SVN_PASSWORD: ${{ secrets.WP_ORG_PASSWORD }}
+        ASSETS_DIR: false
+        BUILD_DIR: plugin-files
+        dry-run: true
       with:
-        plugin_slug: link-preview-cards
-        plugin_dir: ./plugin-files/
-        svn_username: ${{ secrets.WP_ORG_USERNAME }}
-        svn_password: ${{ secrets.WP_ORG_PASSWORD }}
-        plugin_main_file: link-preview-cards.php
-        build_dir: ./plugin-files/
-        readme_file: README.txt
-        stable_tag: ${{ steps.get_version.outputs.VERSION }}
+        generate-zip: false
