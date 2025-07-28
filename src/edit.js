@@ -16,7 +16,7 @@ import { TextControl } from '@wordpress/components';
 import { useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import apiFetch from '@wordpress/api-fetch';
-import Card from './Card';
+import Card from './Card.js';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.

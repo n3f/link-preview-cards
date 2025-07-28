@@ -7,7 +7,10 @@ const cliServer = await runCLI({
   blueprint: "./assets/blueprints/dev.json",
   autoMount: true,
   port: 8888,
+  host: "0.0.0.0",
 });
+
+
 
 console.log("✅ WordPress Playground server started successfully!");
 

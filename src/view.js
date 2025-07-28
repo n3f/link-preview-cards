@@ -25,7 +25,7 @@
 /* eslint-enable no-console */
 
 import { render, createElement } from '@wordpress/element';
-import Card from './Card';
+import Card from './Card.js';
 
 // Wait for DOMContentLoaded to ensure all blocks are present
 document.addEventListener('DOMContentLoaded', () => {

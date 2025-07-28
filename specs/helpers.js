@@ -9,13 +9,13 @@ import { expect } from '@playwright/test';
  * @param {import('@playwright/test').Page} page
  */
 export async function loginToWordPress(page) {
-    await page.goto('http://localhost:8889/wp-admin');
+    await page.goto('http://localhost:8888/wp-admin');
     await page.waitForSelector('#user_login', { timeout: 10000 });
     await page.waitForTimeout(3000);
     await page.fill('#user_login', 'admin');
     await page.fill('#user_pass', 'password');
     await page.click('#wp-submit');
-    await page.waitForURL('http://localhost:8889/wp-admin/', { timeout: 15000 });
+    await page.waitForURL('http://localhost:8888/wp-admin/', { timeout: 15000 });
     await page.waitForSelector('#wpadminbar, .wp-admin', { timeout: 10000 });
 }
 
@@ -24,8 +24,28 @@ export async function loginToWordPress(page) {
  * @param {import('@playwright/test').Page} page
  */
 export async function navigateToNewPost(page) {
-    await page.goto('http://localhost:8889/wp-admin/post-new.php');
+    await page.goto('http://localhost:8888/wp-admin/post-new.php');
     await page.waitForSelector('.block-editor-page', { timeout: 15000 });
+
+    // Dismiss welcome modal if it appears
+    try {
+        const welcomeModal = page.locator('[data-testid="welcome-guide"], .components-modal__screen-overlay');
+        if (await welcomeModal.isVisible({ timeout: 2000 })) {
+            const closeButton = page.locator('[data-testid="welcome-guide"] button[aria-label*="Close"], .components-modal__screen-overlay button[aria-label*="Close"], .components-modal__screen-overlay .components-button[aria-label*="Close"]');
+            if (await closeButton.isVisible({ timeout: 1000 })) {
+                await closeButton.click();
+                // Wait for modal to disappear and editor to be ready
+                await page.waitForSelector('.block-editor-page', { timeout: 10000 });
+                await page.waitForTimeout(1000); // Give editor time to stabilize
+            }
+        }
+    } catch (e) {
+        // Modal might not appear, ignore errors
+    }
+
+    // Ensure editor is fully ready
+    await page.waitForSelector('.block-editor-page', { timeout: 10000 });
+    await page.waitForTimeout(500); // Small delay to ensure editor is stable
 }
 
 /**

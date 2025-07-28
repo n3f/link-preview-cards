@@ -1,0 +1,144 @@
+name: Release Plugin
+
+on:
+  push:
+    branches: [ trunk, main, master ]
+  workflow_dispatch:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    - name: Install dependencies
+      run: bun install
+
+    - name: Run unit tests
+      run: bun run test:unit
+
+    - name: Run PHP unit tests
+      run: php tests/unit-test.php
+
+    - name: Build plugin
+      run: bun run build
+
+    - name: Install Playwright with dependencies
+      run: bunx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: bunx playwright test --workers=1
+
+    - name: Create plugin zip
+      run: |
+        VERSION=$(node -p "require('./package.json').version")
+        bunx wp-scripts plugin-zip
+        mv link-preview-cards.zip link-preview-cards-${VERSION}.zip
+        ZIP_NAME="link-preview-cards-${VERSION}.zip"
+        echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: plugin-zip
+        path: ${{ env.ZIP_NAME }}
+        retention-days: 30
+
+  release:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: plugin-zip
+        path: ./
+
+    - name: Get version
+      id: get_version
+      run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        release_name: Release v${{ steps.get_version.outputs.VERSION }}
+        body: |
+          ## Installation
+
+          1. Download the plugin zip file
+          2. Upload to your WordPress site via Plugins > Add New > Upload Plugin
+          3. Activate the plugin
+          4. Use the "Link Preview Cards" block in the Gutenberg editor
+
+          ## Changelog
+
+          See the [changelog](https://github.com/${{ github.repository }}/blob/main/README.txt) for detailed changes.
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./link-preview-cards-${{ steps.get_version.outputs.VERSION }}.zip
+        asset_name: link-preview-cards-${{ steps.get_version.outputs.VERSION }}.zip
+        asset_content_type: application/zip
+
+  deploy-to-wordpress:
+    needs: release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: plugin-zip
+        path: ./
+
+    - name: Get version
+      id: get_version
+      run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+    - name: Extract plugin zip for WordPress deployment
+      run: |
+        unzip link-preview-cards-${{ steps.get_version.outputs.VERSION }}.zip -d temp-extract/
+        mv temp-extract/link-preview-cards/* plugin-files/
+        rmdir temp-extract/link-preview-cards
+        rmdir temp-extract
+
+    - name: Deploy to WordPress Plugin Directory
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      with:
+        plugin_slug: link-preview-cards
+        plugin_dir: ./plugin-files/
+        svn_username: ${{ secrets.WP_ORG_USERNAME }}
+        svn_password: ${{ secrets.WP_ORG_PASSWORD }}
+        plugin_main_file: link-preview-cards.php
+        build_dir: ./plugin-files/
+        readme_file: README.txt
+        stable_tag: ${{ steps.get_version.outputs.VERSION }}

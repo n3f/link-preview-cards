@@ -1,6 +1,6 @@
 {
   "name": "link-preview-cards",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "WordPress plugin that replaces embeds with link preview cards",
   "scripts": {
