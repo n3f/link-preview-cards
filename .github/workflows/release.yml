@@ -55,7 +55,7 @@ jobs:
   release:
     needs: test-and-build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     permissions:
       contents: write
 
@@ -111,7 +111,7 @@ jobs:
   deploy-to-wordpress:
     needs: release
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
 
     steps:
     - name: Checkout code
