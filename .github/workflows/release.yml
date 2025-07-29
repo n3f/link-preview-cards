@@ -3,6 +3,11 @@ name: Release Plugin
 on:
   push:
     branches: [ trunk, main, master ]
+    paths-ignore:
+      - 'assets/**'
+      - '**.md'
+      - 'docs/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
@@ -55,11 +60,21 @@ jobs:
   release:
     needs: test-and-build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/trunk' && contains(github.event.head_commit.message, '[release]')
     permissions:
       contents: write
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
 
     steps:
+    - name: Check if releases are enabled
+      run: |
+        if [ "${{ secrets.ENABLE_RELEASES }}" != "true" ]; then
+          echo "Releases are disabled. Set ENABLE_RELEASES=true to enable."
+          exit 1
+        fi
+        echo "Releases are enabled"
+
     - name: Checkout code
       uses: actions/checkout@v4
       with:
@@ -112,6 +127,8 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    env:
+      VERSION: ${{ needs.release.outputs.version }}
 
     steps:
     - name: Checkout code
@@ -130,19 +147,19 @@ jobs:
     - name: Extract plugin zip for WordPress deployment
       run: |
         mkdir -p plugin-files
-        unzip link-preview-cards-${{ steps.get_version.outputs.VERSION }}.zip -d temp-extract/
+        unzip link-preview-cards-${{ needs.release.outputs.version }}.zip -d temp-extract/
         mv temp-extract/link-preview-cards/* plugin-files/
         rmdir temp-extract/link-preview-cards
         rmdir temp-extract
 
     - name: Deploy to WordPress Plugin Directory
       uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_USERNAME: ${{ secrets.WP_ORG_USERNAME }}
+        SVN_PASSWORD: ${{ secrets.WP_ORG_PASSWORD }}
+        VERSION: ${{ needs.release.outputs.version }}
+        ASSETS_DIR: false
+        BUILD_DIR: plugin-files
       with:
-        plugin_slug: link-preview-cards
-        plugin_dir: ./plugin-files/
-        svn_username: ${{ secrets.WP_ORG_USERNAME }}
-        svn_password: ${{ secrets.WP_ORG_PASSWORD }}
-        plugin_main_file: link-preview-cards.php
-        build_dir: ./plugin-files/
-        readme_file: README.txt
-        stable_tag: ${{ steps.get_version.outputs.VERSION }}
+        generate-zip: false
+        dry-run: false
