@@ -3,6 +3,11 @@ name: Release Plugin
 on:
   push:
     branches: [ trunk, main, master ]
+    paths-ignore:
+      - 'assets/**'
+      - '**.md'
+      - 'docs/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
@@ -55,7 +60,7 @@ jobs:
   release:
     needs: test-and-build
     runs-on: ubuntu-latest
-    #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/trunk' && contains(github.event.head_commit.message, '[release]')
     permissions:
       contents: write
     outputs:
@@ -113,7 +118,7 @@ jobs:
   deploy-to-wordpress:
     needs: release
     runs-on: ubuntu-latest
-    #if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/trunk' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     env:
       VERSION: ${{ needs.release.outputs.version }}
 
@@ -147,6 +152,6 @@ jobs:
         VERSION: ${{ needs.release.outputs.version }}
         ASSETS_DIR: false
         BUILD_DIR: plugin-files
-        dry-run: true
       with:
         generate-zip: false
+        dry-run: false
