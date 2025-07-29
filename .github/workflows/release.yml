@@ -67,6 +67,14 @@ jobs:
       version: ${{ steps.get_version.outputs.VERSION }}
 
     steps:
+    - name: Check if releases are enabled
+      run: |
+        if [ "${{ secrets.ENABLE_RELEASES }}" != "true" ]; then
+          echo "Releases are disabled. Set ENABLE_RELEASES=true to enable."
+          exit 1
+        fi
+        echo "Releases are enabled"
+
     - name: Checkout code
       uses: actions/checkout@v4
       with:
